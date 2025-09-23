@@ -193,8 +193,7 @@ implementation of the scheme, which will remain more ubiquitous for secp256r1 in
 this reason we put the ML-KEM shared secret first in X25519MLKEM768, and the ECDH shared secret
 first in SecP256r1MLKEM768 and SecP384r1MLKEM1024.
 
-**Failures**. We note that ML-KEM algorithm has non-zero probability of encapsulation and decapsulation failures. Those
-failures MAY be handled by clients in a way described in {{Section 4 of hybrid}}.
+**Failures**. Any hybrid key establishment failures MAY be handled by clients in a way described in {{Section 4 of hybrid}}.
 
 # Security Considerations
 
