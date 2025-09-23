@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Informational                             P. Kampanakis
-Expires: 25 March 2026                                               AWS
+Expires: 27 March 2026                                               AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                       21 September 2025
+                                                       23 September 2025
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 March 2026.
+   This Internet-Draft will expire on 27 March 2026.
 
 Copyright Notice
 
@@ -253,9 +253,8 @@ Table of Contents
    and the ECDH shared secret first in SecP256r1MLKEM768 and
    SecP384r1MLKEM1024.
 
-   *Failures*. We note that ML-KEM algorithm has non-zero probability of
-   encapsulation and decapsulation failures.  Those failures MAY be
-   handled by clients in a way described in Section 4 of [hybrid].
+   *Failures*. Any hybrid key establishment failures MAY be handled by
+   clients in a way described in Section 4 of [hybrid].
 
 5.  Security Considerations
 
