@@ -119,7 +119,7 @@ defined  in {{Section 4.2.8.2 of !RFC8446}}. The size of the client share is 124
 
 When the SecP384r1MLKEM1024 group is negotiated, the client's key_exchange value
 is the concatenation of the secp384r1 ephemeral share and the ML-KEM-1024
-encapsulation key. The ECDH share is serialized value of the uncompressed ECDH point
+encapsulation key. The ECDH share is the serialized value of the uncompressed ECDH point
 representation as defined in {{Section 4.2.8.2 of !RFC8446}}. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 and the 1568 for the ML-KEM).
 
