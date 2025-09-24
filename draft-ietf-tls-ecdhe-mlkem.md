@@ -283,7 +283,7 @@ This document obsoletes X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft
 * draft-ietf-tls-ecdhe-mlkem-01:
   * Alignment with the final version of {{hybrid}}
   * Added new section called Discussion and moved FIPS-compliance and Failures text there.
-  * Removed Construction section.
+  * The Construction section has been removed.
 
 * draft-ietf-tls-ecdhe-mlkem-00:
   * Change a name of the draft, following adoption by TLS WG
