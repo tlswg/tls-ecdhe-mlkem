@@ -51,7 +51,6 @@ normative:
   NIST-SP-800-56C: DOI.10.6028/NIST.SP.800-56Cr2
   NIST-SP-800-135: DOI.10.6028/NIST.SP.800-135r1
 informative:
-  xyber: I-D.tls-westerbaan-xyber768d00-03
   hybrid: I-D.ietf-tls-hybrid-design
   tlsiana: I-D.ietf-tls-rfc8447bis
   HKDF: DOI.10.17487/RFC5869
