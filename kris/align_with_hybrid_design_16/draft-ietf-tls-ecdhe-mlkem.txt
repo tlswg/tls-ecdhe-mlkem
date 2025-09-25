@@ -380,12 +380,6 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
               rfc8447bis-15>.
 
-   [xyber]    Westerbaan, B. and D. Stebila, "X25519Kyber768Draft00
-              hybrid post-quantum key agreement", Work in Progress,
-              Internet-Draft, draft-tls-westerbaan-xyber768d00-03, 24
-              September 2023, <https://datatracker.ietf.org/doc/html/
-              draft-tls-westerbaan-xyber768d00-03>.
-
 Appendix A.  Change log
 
    *  draft-ietf-tls-ecdhe-mlkem-01:
