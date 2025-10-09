@@ -199,27 +199,6 @@ This document requests/registers three new entries to the TLS Supported Groups r
 to the procedures in {{Section 6 of tlsiana}}. These identifiers are to be used with the final,
 ratified by NIST, version of ML-KEM which is specified in {{FIPS203}}.
 
-## SecP256r1MLKEM768
-
- Value:
- : 4587 (0x11EB)
-
- Description:
- : SecP256r1MLKEM768
-
- DTLS-OK:
- : Y
-
- Recommended:
- : N
-
- Reference:
- : This document
-
- Comment:
- : Combining secp256r1 ECDH with ML-KEM-768
- {: spacing="compact"}
-
 ## X25519MLKEM768
 
  Value:
@@ -240,6 +219,27 @@ ratified by NIST, version of ML-KEM which is specified in {{FIPS203}}.
  Comment:
  : Combining X25519 ECDH with ML-KEM-768
 {: spacing="compact"}
+
+## SecP256r1MLKEM768
+
+ Value:
+ : 4587 (0x11EB)
+
+ Description:
+ : SecP256r1MLKEM768
+
+ DTLS-OK:
+ : Y
+
+ Recommended:
+ : N
+
+ Reference:
+ : This document
+
+ Comment:
+ : Combining secp256r1 ECDH with ML-KEM-768
+ {: spacing="compact"}
 
 ## SecP384r1MLKEM1024
 
