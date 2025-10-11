@@ -62,7 +62,7 @@ a post-quantum KEM with an elliptic curve Diffie-Hellman (ECDHE).
 
 --- middle
 
-# Motivation
+# Introduction
 
 ML-KEM is a key encapsulation method (KEM) defined in the {{FIPS203}}. It is designed to
 withstand cryptanalytic attacks from quantum computers.
