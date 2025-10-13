@@ -74,19 +74,6 @@ adversaries while maintaining compatibility with existing infrastructure and pro
 This document applies the framework to ML-KEM, a key encapsulation mechanism defined in {{NIST-FIPS-203}},
 and specifies code points for the hybrid groups.
 
-# Motivation
-
-This document introduces three new supported groups for hybrid post-quantum key agreements in TLS 1.3: the X25519MLKEM768,
-SecP256r1MLKEM768, and SecP384r1MLKEM1024 which combine ML-KEM with ECDH in the manner of {{hybrid}}.
-
-* The first one uses X25519 {{rfc7748}}, is widely deployed, and often serves as the most practical choice for a single PQ/T hybrid combiner in TLS 1.3.
-
-* The second group uses secp256r1 (NIST P-256).
-
-* The third group uses secp384r1 (NIST P-384).
-
-Key establishment using NIST curves is outlined in Section 6.1.1.2 of {{!KEYAGREEMENT=DOI.10.6028/NIST.SP.800-56Ar3}}.
-
 ## Terminology
 
 The {{hybrid}} document defines "traditional" algorithms as those that are already widely adopted and "next-generation" algorithms
