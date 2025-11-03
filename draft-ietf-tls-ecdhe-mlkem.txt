@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Informational                             P. Kampanakis
-Expires: 14 April 2026                                               AWS
+Expires: 7 May 2026                                                  AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                         11 October 2025
+                                                         3 November 2025
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 April 2026.
+   This Internet-Draft will expire on 7 May 2026.
 
 Copyright Notice
 
@@ -74,27 +74,31 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-     1.1.  Motivation
-     1.2.  Terminology
-   2.  Conventions and Definitions
-   3.  Negotiated Groups
-     3.1.  Client share
-     3.2.  Server share
-     3.3.  Shared secret
-   4.  Discussion
-   5.  Security Considerations
-   6.  IANA Considerations
-     6.1.  SecP256r1MLKEM768
-     6.2.  X25519MLKEM768
-     6.3.  SecP384r1MLKEM1024
-     6.4.  Obsoleted Supported Groups
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   2.  Motivation
+     2.1.  Terminology
+   3.  Conventions and Definitions
+   4.  Negotiated Groups
+     4.1.  Client share
+     4.2.  Server share
+     4.3.  Shared secret
+   5.  Discussion
+   6.  Security Considerations
+   7.  IANA Considerations
+     7.1.  X25519MLKEM768
+     7.2.  SecP256r1MLKEM768
+     7.3.  SecP384r1MLKEM1024
+     7.4.  Obsoleted Supported Groups
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Appendix A.  Change log
    Authors' Addresses
 
 1.  Introduction
+
+   ML-KEM is a key encapsulation method (KEM) defined in the
+   [NIST-FIPS-203].  It is designed to withstand cryptanalytic attacks
+   from quantum computers.
 
    The [hybrid] document defines a framework for combining traditional
    key exchanges with next-generation key exchange in TLS 1.3.  The goal
@@ -106,7 +110,7 @@ Table of Contents
    mechanism defined in [NIST-FIPS-203], and specifies code points for
    the hybrid groups.
 
-1.1.  Motivation
+2.  Motivation
 
    This document introduces three new supported groups for hybrid post-
    quantum key agreements in TLS 1.3: the X25519MLKEM768,
@@ -128,7 +132,7 @@ Table of Contents
    Key establishment using NIST curves is outlined in Section 6.1.1.2 of
    [KEYAGREEMENT].
 
-1.2.  Terminology
+2.1.  Terminology
 
    The [hybrid] document defines "traditional" algorithms as those that
    are already widely adopted and "next-generation" algorithms as those
@@ -140,7 +144,7 @@ Table of Contents
    combines a traditional key exchange with a next-generation key
    exchange.  This document uses the term "hybrid" in the same way.
 
-2.  Conventions and Definitions
+3.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -148,9 +152,9 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Negotiated Groups
+4.  Negotiated Groups
 
-3.1.  Client share
+4.1.  Client share
 
    When the X25519MLKEM768 group is negotiated, the client's
    key_exchange value is the concatenation of the client's ML-KEM-768
@@ -173,13 +177,13 @@ Table of Contents
 
    When the SecP384r1MLKEM1024 group is negotiated, the client's
    key_exchange value is the concatenation of the secp384r1 ephemeral
-   share and the ML-KEM-1024 encapsulation key.  The ECDH share is the
-   serialized value of the uncompressed ECDH point representation as
+   share and the ML-KEM-1024 encapsulation key.  The ECDH share is
+   serialized value of the uncompressed ECDH point represenation as
    defined in Section 4.2.8.2 of [RFC8446].  The size of the client
-   share is 1665 bytes (97 bytes for the secp384r1 and the 1568 for the
-   ML-KEM).
+   share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-
+   KEM).
 
-3.2.  Server share
+4.2.  Server share
 
    When the X25519MLKEM768 group is negotiated, the server's key
    exchange value is the concatenation of an ML-KEM ciphertext returned
@@ -215,7 +219,7 @@ Table of Contents
    described in Section 4.2.8.2 of [RFC8446], including all validity
    checks, and abort with an illegal_parameter alert if it fails.
 
-3.3.  Shared secret
+4.3.  Shared secret
 
    For X25519MLKEM768, the shared secret is the concatenation of the ML-
    KEM shared secret and the X25519 shared secret.  The shared secret is
@@ -240,24 +244,39 @@ Table of Contents
    including the all-zero shared secret check for X25519, and abort the
    connection with an illegal_parameter alert if it fails.
 
-4.  Discussion
+5.  Discussion
 
-   *FIPS-compliance*. All groups defined in this document permit FIPS-
-   approved key derivation as per [NIST-SP-800-56C] and
-   [NIST-SP-800-135].  NIST's special publication 800-56Cr2
-   [NIST-SP-800-56C] approves the usage of HKDF [HKDF] with two distinct
-   shared secrets, with the condition that the first one is computed by
-   a FIPS-approved key-establishment scheme.  FIPS also requires a
-   certified implementation of the scheme, which will remain more
-   ubiquitous for secp256r1 in the coming years.  For this reason we put
-   the ML-KEM shared secret first in X25519MLKEM768, and the ECDH shared
-   secret first in SecP256r1MLKEM768 and SecP384r1MLKEM1024.  This means
-   that for SecP256r1MLKEM768 and SecP384r1MLKEM1024, the ECDH
-   implementation must be certified whereas the ML-KEM implementation
-   does not require certification.  In contrast, for X25519MLKEM768, the
-   ML-KEM implementation must be certified.
+   *  *FIPS-compliance*. All groups defined in this document permit
+      FIPS-approved key derivation as per [NIST-SP-800-56C] and
+      [NIST-SP-800-135].  NIST's special publication 800-56Cr2
+      [NIST-SP-800-56C] approves the usage of HKDF [HKDF] with two
+      distinct shared secrets, with the condition that the first one is
+      computed by a FIPS-approved key-establishment scheme.  FIPS also
+      requires a certified implementation of the scheme, which will
+      remain more ubiquitous for secp256r1 in the coming years.  For
+      this reason we put the ML-KEM shared secret first in
+      X25519MLKEM768, and the ECDH shared secret first in
+      SecP256r1MLKEM768 and SecP384r1MLKEM1024.  This means that for
+      SecP256r1MLKEM768 and SecP384r1MLKEM1024, the ECDH implementation
+      must be certified whereas the ML-KEM implementation does not
+      require certification.  In contrast, for X25519MLKEM768, the ML-
+      KEM implementation must be certified.
 
-5.  Security Considerations
+   *  *SP800-227 compliance*. The NIST Special Publication 800-227
+      [NIST-SP-800-227] provides general guidance on the design and use
+      of key-encapsulation mechanisms, including hybrid constructions.
+      The key agreements defined in this document follow the principles
+      described in Section 4.6 of [NIST-SP-800-227], which discusses the
+      combination of post-quantum and classical key-establishment
+      schemes and the use of approved key combiners.  In particular, the
+      shared-secret concatenation and HKDF-based derivation used by the
+      TLS 1.3 are consistent with the composite-KEM constructions and
+      key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2
+      of [NIST-SP-800-227].  Section 4.6.3 of [NIST-SP-800-227] further
+      provides relevant security considerations for hybrid KEM designs
+      underlying the approach used in this document.
+
+6.  Security Considerations
 
    The same security considerations as those described in [hybrid] apply
    to the approach used by this document.  The security analysis relies
@@ -272,7 +291,7 @@ Table of Contents
    public keys, ciphertexts, and shared secrets, which complies with the
    requirements described in Section 6 of [hybrid].
 
-6.  IANA Considerations
+7.  IANA Considerations
 
    This document requests/registers three new entries to the TLS
    Supported Groups registry, according to the procedures in Section 6
@@ -280,16 +299,7 @@ Table of Contents
    ratified by NIST, version of ML-KEM which is specified in
    [NIST-FIPS-203].
 
-6.1.  SecP256r1MLKEM768
-
-   Value:  4587 (0x11EB)
-   Description:  SecP256r1MLKEM768
-   DTLS-OK:  Y
-   Recommended:  N
-   Reference:  This document
-   Comment:  Combining secp256r1 ECDH with ML-KEM-768
-
-6.2.  X25519MLKEM768
+7.1.  X25519MLKEM768
 
    Value:  4588 (0x11EC)
    Description:  X25519MLKEM768
@@ -298,7 +308,16 @@ Table of Contents
    Reference:  This document
    Comment:  Combining X25519 ECDH with ML-KEM-768
 
-6.3.  SecP384r1MLKEM1024
+7.2.  SecP256r1MLKEM768
+
+   Value:  4587 (0x11EB)
+   Description:  SecP256r1MLKEM768
+   DTLS-OK:  Y
+   Recommended:  N
+   Reference:  This document
+   Comment:  Combining secp256r1 ECDH with ML-KEM-768
+
+7.3.  SecP384r1MLKEM1024
 
    Value:  4589 (0x11ED)
    Description:  SecP384r1MLKEM1024
@@ -307,15 +326,15 @@ Table of Contents
    Reference:  This document
    Comment:  Combining secp384r1 ECDH with ML-KEM-1024
 
-6.4.  Obsoleted Supported Groups
+7.4.  Obsoleted Supported Groups
 
    This document obsoletes X25519Kyber768Draft00 (25497) and
    SecP256r1Kyber768Draft00 (25498) in the TLS Supported Groups
    registry.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [KEYAGREEMENT]
               Barker, E., Chen, L., Roginsky, A., Vassilev, A., and R.
@@ -336,6 +355,12 @@ Table of Contents
               specific key derivation functions", National Institute of
               Standards and Technology, DOI 10.6028/nist.sp.800-135r1,
               2011, <https://doi.org/10.6028/nist.sp.800-135r1>.
+
+   [NIST-SP-800-227]
+              Alagic, G., "Recommendations for Key-Encapsulation
+              Mechanisms", National Institute of Standards and
+              Technology, DOI 10.6028/nist.sp.800-227, 2025,
+              <https://doi.org/10.6028/nist.sp.800-227>.
 
    [NIST-SP-800-56C]
               Barker, E., Chen, L., and R. Davis, "Recommendation for
@@ -361,7 +386,7 @@ Table of Contents
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/rfc/rfc8446>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [HKDF]     Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC Editor,
