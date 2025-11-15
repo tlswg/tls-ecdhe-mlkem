@@ -1,7 +1,7 @@
 ---
 title: Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
 abbrev: ECDHE-MLKEM
-category: info
+category: std
 
 docname: draft-ietf-tls-ecdhe-mlkem-latest
 submissiontype: IETF
@@ -280,7 +280,7 @@ ratified by NIST, version of ML-KEM which is specified in {{NIST-FIPS-203}}.
 
 ## Obsoleted Supported Groups
 
-This document obsoletes X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498) in the TLS Supported Groups registry.
+Experimental code points for pre-standard versions of Kyber786 were added to the TLS registry as X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498). This document obsoletes these entries. IANA is instructed to modify the recommended field to 'D' and update the reference to add [ this RFC ].  The comment fields for 25497 and 25498 are updated to "Pre-standards version of Kyber768. Obsoleted by [this RFC]"
 
 --- back
 
