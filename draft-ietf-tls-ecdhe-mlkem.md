@@ -65,14 +65,14 @@ a post-quantum KEM with an elliptic curve Diffie-Hellman (ECDHE).
 
 # Introduction
 
-ML-KEM is a key encapsulation method (KEM) defined in the {{NIST-FIPS-203}}. It is designed to
+ML-KEM is a key encapsulation mechanism (KEM) defined in the {{NIST-FIPS-203}}. It is designed to
 withstand cryptanalytic attacks from quantum computers.
 
 The {{hybrid}} document defines a framework for combining traditional key exchanges with next-generation key
 exchange in TLS 1.3. The goal of this approach is to provide security against both classical and quantum
 adversaries while maintaining compatibility with existing infrastructure and protocols.
 
-This document applies the framework to ML-KEM, a key encapsulation mechanism defined in {{NIST-FIPS-203}},
+This document applies the framework to ML-KEM
 and specifies code points for the hybrid groups.
 
 # Motivation
