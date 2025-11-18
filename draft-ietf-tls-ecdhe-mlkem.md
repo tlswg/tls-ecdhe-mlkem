@@ -50,7 +50,6 @@ normative:
   NIST-FIPS-203: DOI.10.6028/NIST.FIPS.203
   NIST-SP-800-56C: DOI.10.6028/NIST.SP.800-56Cr2
   NIST-SP-800-135: DOI.10.6028/NIST.SP.800-135r1
-  NIST-SP-800-227: DOI.10.6028/NIST.SP.800-227
 informative:
   hybrid: I-D.ietf-tls-hybrid-design
   tlsiana: I-D.ietf-tls-rfc8447bis
@@ -195,8 +194,6 @@ this reason we put the ML-KEM shared secret first in X25519MLKEM768, and the ECD
 first in SecP256r1MLKEM768 and SecP384r1MLKEM1024. This means that for SecP256r1MLKEM768 and SecP384r1MLKEM1024,
 the ECDH implementation must be certified whereas the ML-KEM implementation does not require certification. In
 contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.
-
-* **SP800-227 compliance**. The NIST Special Publication 800-227 {{NIST-SP-800-227}} provides general guidance on the design and use of key-encapsulation mechanisms, including hybrid constructions. The key agreements defined in this document follow the principles described in Section 4.6 of {{NIST-SP-800-227}}, which discusses the combination of post-quantum and classical key-establishment schemes and the use of approved key combiners. In particular, the shared-secret concatenation and HKDF-based derivation used by the TLS 1.3 are consistent with the composite-KEM constructions and key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of {{NIST-SP-800-227}}. Section 4.6.3 of {{NIST-SP-800-227}} further provides relevant security considerations for hybrid KEM designs underlying the approach used in this document.
 
 # Security Considerations
 
