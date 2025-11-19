@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Standards Track                           P. Kampanakis
-Expires: 21 May 2026                                                 AWS
+Expires: 23 May 2026                                                 AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                        17 November 2025
+                                                        19 November 2025
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 May 2026.
+   This Internet-Draft will expire on 23 May 2026.
 
 Copyright Notice
 
@@ -96,7 +96,7 @@ Table of Contents
 
 1.  Introduction
 
-   ML-KEM is a key encapsulation method (KEM) defined in the
+   ML-KEM is a key encapsulation mechanism (KEM) defined in the
    [NIST-FIPS-203].  It is designed to withstand cryptanalytic attacks
    from quantum computers.
 
@@ -106,9 +106,8 @@ Table of Contents
    quantum adversaries while maintaining compatibility with existing
    infrastructure and protocols.
 
-   This document applies the framework to ML-KEM, a key encapsulation
-   mechanism defined in [NIST-FIPS-203], and specifies code points for
-   the hybrid groups.
+   This document applies the framework to ML-KEM and specifies code
+   points for the hybrid groups.
 
 2.  Motivation
 
