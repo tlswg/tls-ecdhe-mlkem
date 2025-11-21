@@ -204,7 +204,7 @@ The same security considerations as those described in {{hybrid}} apply to the a
 The security analysis relies crucially on the TLS 1.3 message transcript, and one cannot assume a similar
 hybridisation is secure in other protocols.
 
-Implementers are encouraged to use implementations resistant to side-channel attacks,
+{{NIST-SP-800-227}} includes guidelines and requirements for implementations on using KEMs securely. Implementers are encouraged to use implementations resistant to side-channel attacks,
 especially those that can be applied by remote attackers.
 
 All groups defined in this document use and generate fixed-length public keys, ciphertexts,
