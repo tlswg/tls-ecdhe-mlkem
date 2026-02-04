@@ -79,7 +79,7 @@ and specifies code points for the hybrid groups.
 
 This document introduces three new supported groups for hybrid post-quantum key agreements in TLS 1.3: the X25519MLKEM768,
 SecP256r1MLKEM768, and SecP384r1MLKEM1024 which combine ML-KEM with ECDH in the manner of {{hybrid}}. Any of the hybrid groups
-specified in this document may be implemented in a FIPS approved way as discussed in {{regulatory-and-standards}}.
+specified in this document may be implemented in a FIPS approved way as discussed in {{regulatory-context}}.
 
 * The first one uses X25519 {{rfc7748}}, is widely deployed, and often serves as the most practical choice for a single PQ/T hybrid combiner in TLS 1.3.
 
@@ -184,11 +184,11 @@ shared secret as described in {{Section 7.4.2 of !RFC8446}}, including the
 all-zero shared secret check for X25519, and abort the connection with an
 illegal_parameter alert if it fails.
 
-# Regulatory and Standards Compliance {#regulatory-and-standards}
+# Regulatory Context {#regulatory-context}
 
-This section provides context on how the hybrid key agreement mechanisms defined in this document
-relate to existing NIST guidance, which describes recommended constructions for key derivation
-and hybrid key establishment.
+This section provides informal notes on how the hybrid key agreement mechanisms defined
+in this document relate to existing NIST guidance on key derivation and hybrid
+key establishment.
 
 * **FIPS-compliance**. All groups defined in this document permit FIPS-approved key derivation as per {{NIST-SP-800-56C}}
 and {{NIST-SP-800-135}}. NIST's special publication 800-56Cr2 {{NIST-SP-800-56C}} approves the
