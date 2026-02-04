@@ -81,7 +81,7 @@ Table of Contents
      4.1.  Client share
      4.2.  Server share
      4.3.  Shared secret
-   5.  Regulatory and Standards Compliance
+   5.  Regulatory Context
    6.  Security Considerations
    7.  IANA Considerations
      7.1.  X25519MLKEM768
@@ -245,12 +245,11 @@ Table of Contents
    including the all-zero shared secret check for X25519, and abort the
    connection with an illegal_parameter alert if it fails.
 
-5.  Regulatory and Standards Compliance
+5.  Regulatory Context
 
-   This section provides context on how the hybrid key agreement
-   mechanisms defined in this document relate to existing NIST guidance,
-   which describes recommended constructions for key derivation and
-   hybrid key establishment.
+   This section provides informal notes on how the hybrid key agreement
+   mechanisms defined in this document relate to existing NIST guidance
+   on key derivation and hybrid key establishment.
 
    *  *FIPS-compliance*. All groups defined in this document permit
       FIPS-approved key derivation as per [NIST-SP-800-56C] and
