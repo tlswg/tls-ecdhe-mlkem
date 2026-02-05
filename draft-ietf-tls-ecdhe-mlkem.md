@@ -197,9 +197,9 @@ key establishment.
 and {{NIST-SP-800-135}}. NIST's special publication 800-56Cr2 {{NIST-SP-800-56C}} approves the
 usage of HKDF {{HKDF}} with two distinct shared secrets, with the condition that the first
 one is computed by a FIPS-approved key-establishment scheme. FIPS also requires a certified
-implementation of the scheme, which will remain more ubiquitous for secp256r1 in the coming years. For
-this reason we put the ML-KEM shared secret first in X25519MLKEM768, and the ECDH shared secret
-first in SecP256r1MLKEM768 and SecP384r1MLKEM1024. This means that for SecP256r1MLKEM768 and SecP384r1MLKEM1024,
+implementation of the scheme, which will remain more ubiquitous for secp256r1 in the coming years. For this reason,
+the ML-KEM shared secret is placed first in X25519MLKEM768, while the ECDH shared secret is placed first
+in SecP256r1MLKEM768 and SecP384r1MLKEM1024. This means that for SecP256r1MLKEM768 and SecP384r1MLKEM1024,
 the ECDH implementation must be certified whereas the ML-KEM implementation does not require certification. In
 contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.
 
