@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Standards Track                           P. Kampanakis
-Expires: 23 July 2026                                                AWS
+Expires: 9 August 2026                                               AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                         19 January 2026
+                                                         5 February 2026
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 July 2026.
+   This Internet-Draft will expire on 9 August 2026.
 
 Copyright Notice
 
@@ -81,7 +81,7 @@ Table of Contents
      4.1.  Client share
      4.2.  Server share
      4.3.  Shared secret
-   5.  Discussion
+   5.  Regulatory Context
    6.  Security Considerations
    7.  IANA Considerations
      7.1.  X25519MLKEM768
@@ -248,7 +248,11 @@ Table of Contents
    including the all-zero shared secret check for X25519, and abort the
    connection with an illegal_parameter alert if it fails.
 
-5.  Discussion
+5.  Regulatory Context
+
+   This section provides informal notes on how the hybrid key agreement
+   mechanisms defined in this document relate to existing NIST guidance
+   on key derivation and hybrid key establishment.
 
    *  *FIPS-compliance*. All groups defined in this document permit
       FIPS-approved key derivation as per [NIST-SP-800-56C] and
