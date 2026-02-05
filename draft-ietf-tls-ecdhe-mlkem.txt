@@ -262,8 +262,8 @@ Table of Contents
       computed by a FIPS-approved key-establishment scheme.  FIPS also
       requires a certified implementation of the scheme, which will
       remain more ubiquitous for secp256r1 in the coming years.  For
-      this reason we put the ML-KEM shared secret first in
-      X25519MLKEM768, and the ECDH shared secret first in
+      this reason, the ML-KEM shared secret is placed first in
+      X25519MLKEM768, while the ECDH shared secret is placed first in
       SecP256r1MLKEM768 and SecP384r1MLKEM1024.  This means that for
       SecP256r1MLKEM768 and SecP384r1MLKEM1024, the ECDH implementation
       must be certified whereas the ML-KEM implementation does not
