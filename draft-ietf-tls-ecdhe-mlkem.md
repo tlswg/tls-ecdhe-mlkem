@@ -215,8 +215,7 @@ and shared secrets, which complies with the requirements described in {{Section 
 
 # IANA Considerations
 
-This document requests/registers three new entries to the TLS Supported Groups registry, according
-to the procedures in {{Section 6 of tlsiana}}. These identifiers are to be used with the final,
+This document requests/registers three new entries to the [TLS Supported Groups registry](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8), according to the procedures in {{Section 6 of tlsiana}}. These identifiers are to be used with the final,
 ratified by NIST, version of ML-KEM which is specified in {{NIST-FIPS-203}}.
 
 ## X25519MLKEM768
