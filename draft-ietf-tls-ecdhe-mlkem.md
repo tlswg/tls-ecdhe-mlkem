@@ -47,13 +47,13 @@ author:
 
 normative:
   RFC7748:
+  hybrid: I-D.ietf-tls-hybrid-design
   NIST-FIPS-186: DOI.10.6028/NIST.FIPS.186-5
   NIST-FIPS-203: DOI.10.6028/NIST.FIPS.203
   NIST-SP-800-56A: DOI.10.6028/NIST.SP.800-56Ar3
   NIST-SP-800-56C: DOI.10.6028/NIST.SP.800-56Cr2
   NIST-SP-800-135: DOI.10.6028/NIST.SP.800-135r1
   NIST-SP-800-227: DOI.10.6028/NIST.SP.800-227
-  hybrid: I-D.ietf-tls-hybrid-design
 informative:
   RFC9794:
   RFC9847:
@@ -290,11 +290,19 @@ ratified by NIST, version of ML-KEM which is specified in {{NIST-FIPS-203}}.
 
 ## Obsoleted Supported Groups
 
-Experimental code points for pre-standard versions of Kyber786 were added to the TLS registry as X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498). This document obsoletes these entries. IANA is instructed to modify the recommended field to 'D' and update the reference to add [ this RFC ].  The comment fields for 25497 and 25498 are updated to "Pre-standards version of Kyber768. Obsoleted by [this RFC]"
+Experimental code points for pre-standard versions of Kyber768 were added to the TLS registry as X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498). This document obsoletes these entries. IANA is instructed to modify the recommended field to 'D' and update the reference to add [ this RFC ].  The comment fields for 25497 and 25498 are updated to "Pre-standards version of Kyber768. Obsoleted by [this RFC]"
 
 --- back
 
 # Change log
+
+* draft-ietf-tls-ecdhe-mlkem-04:
+  * Status: Sets document category to Standards Track
+  * References: Make {{hybrid}} normative; add/clarify HKDF reference via RFC 5869; update to RFC 9847 (replacing draft-ietf-tls-rfc8447bis).
+  * Text: Rename “Discussion” to “Regulatory context” and expand it (incl. NIST SP 800-227 notes).
+  * IANA/TLS registry: Obsoletes the experimental pre-standard Kyber768 groups X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498); instruct IANA to set Recommended = “D”, update Reference to this RFC, and update Comments accordingly.
+  * Editorial: Addressed nits, including normalizing reference labels to a consistent format (e.g., RFC7748 instead of rfc7748 or ad-hoc labels like HKDF) and renaming NIST references to the NIST-... form.
+
 * draft-ietf-tls-ecdhe-mlkem-01:
   * Alignment with the final version of {{hybrid}}
   * Added new section called Discussion and moved FIPS-compliance and Failures text there.
