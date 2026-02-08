@@ -1559,7 +1559,7 @@ ratified by NIST, version of ML-KEM which is specified in <span>[<a href="#NIST-
         <h3 id="name-obsoleted-supported-groups">
 <a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-obsoleted-supported-groups" class="section-name selfRef">Obsoleted Supported Groups</a>
         </h3>
-<p id="section-7.4-1">Experimental code points for pre-standard versions of Kyber786 were added to the TLS registry as X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498). This document obsoletes these entries. IANA is instructed to modify the recommended field to 'D' and update the reference to add [ this RFC ].  The comment fields for 25497 and 25498 are updated to "Pre-standards version of Kyber768. Obsoleted by [this RFC]"<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+<p id="section-7.4-1">Experimental code points for pre-standard versions of Kyber768 were added to the TLS registry as X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498). This document obsoletes these entries. IANA is instructed to modify the recommended field to 'D' and update the reference to add [ this RFC ].  The comment fields for 25497 and 25498 are updated to "Pre-standards version of Kyber768. Obsoleted by [this RFC]"<a href="#section-7.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1652,85 +1652,105 @@ ratified by NIST, version of ML-KEM which is specified in <span>[<a href="#NIST-
       </h2>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.1">
-          <p id="appendix-A-1.1.1">draft-ietf-tls-ecdhe-mlkem-01:<a href="#appendix-A-1.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.1.1">draft-ietf-tls-ecdhe-mlkem-04:<a href="#appendix-A-1.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.1.2.1">
-              <p id="appendix-A-1.1.2.1.1">Alignment with the final version of <span>[<a href="#hybrid" class="cite xref">hybrid</a>]</span><a href="#appendix-A-1.1.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.1.2.1.1">Status: Sets document category to Standards Track<a href="#appendix-A-1.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-1.1.2.2">
-              <p id="appendix-A-1.1.2.2.1">Added new section called Discussion and moved FIPS-compliance and Failures text there.<a href="#appendix-A-1.1.2.2.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.1.2.2.1">References: Make <span>[<a href="#hybrid" class="cite xref">hybrid</a>]</span> normative; add/clarify HKDF reference via RFC 5869; update to RFC 9847 (replacing draft-ietf-tls-rfc8447bis).<a href="#appendix-A-1.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-1.1.2.3">
-              <p id="appendix-A-1.1.2.3.1">The Construction section has been removed.<a href="#appendix-A-1.1.2.3.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.1.2.3.1">Text: Rename “Discussion” to “Regulatory context” and expand it (incl. NIST SP 800-227 notes).<a href="#appendix-A-1.1.2.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.1.2.4">
+              <p id="appendix-A-1.1.2.4.1">IANA/TLS registry: Obsoletes the experimental pre-standard Kyber768 groups X25519Kyber768Draft00 (25497) and SecP256r1Kyber768Draft00 (25498); instruct IANA to set Recommended = “D”, update Reference to this RFC, and update Comments accordingly.<a href="#appendix-A-1.1.2.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.1.2.5">
+              <p id="appendix-A-1.1.2.5.1">Editorial: Addressed nits, including normalizing reference labels to a consistent format (e.g., RFC7748 instead of rfc7748 or ad-hoc labels like HKDF) and renaming NIST references to the NIST-... form.<a href="#appendix-A-1.1.2.5.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
         <li class="normal" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1">draft-ietf-tls-ecdhe-mlkem-00:<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.2.1">draft-ietf-tls-ecdhe-mlkem-01:<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.2.2.1">
-              <p id="appendix-A-1.2.2.1.1">Change a name of the draft, following adoption by TLS WG<a href="#appendix-A-1.2.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.2.2.1.1">Alignment with the final version of <span>[<a href="#hybrid" class="cite xref">hybrid</a>]</span><a href="#appendix-A-1.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-1.2.2.2">
-              <p id="appendix-A-1.2.2.2.1">Fixes references to the to NIST ECC CDH<a href="#appendix-A-1.2.2.2.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.2.2.2.1">Added new section called Discussion and moved FIPS-compliance and Failures text there.<a href="#appendix-A-1.2.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.2.2.3">
+              <p id="appendix-A-1.2.2.3.1">The Construction section has been removed.<a href="#appendix-A-1.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
         <li class="normal" id="appendix-A-1.3">
-          <p id="appendix-A-1.3.1">draft-kwiatkowski-tls-ecdhe-mlkem-03:<a href="#appendix-A-1.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.3.1">draft-ietf-tls-ecdhe-mlkem-00:<a href="#appendix-A-1.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.3.2.1">
-              <p id="appendix-A-1.3.2.1.1">Adds P-384 combined with ML-KEM-1024<a href="#appendix-A-1.3.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.3.2.1.1">Change a name of the draft, following adoption by TLS WG<a href="#appendix-A-1.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-1.3.2.2">
-              <p id="appendix-A-1.3.2.2.1">Adds text that describes error-handling and outlines how the client and server must ensure the integrity of the key exchange process.<a href="#appendix-A-1.3.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-1.3.2.3">
-              <p id="appendix-A-1.3.2.3.1">Adds note on the incompatibility of the codepoint name X25519MLKEM768 with <span>[<a href="#hybrid" class="cite xref">hybrid</a>]</span>.<a href="#appendix-A-1.3.2.3.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-1.3.2.4">
-              <p id="appendix-A-1.3.2.4.1">Various cosmetic changes.<a href="#appendix-A-1.3.2.4.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.3.2.2.1">Fixes references to the to NIST ECC CDH<a href="#appendix-A-1.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
         <li class="normal" id="appendix-A-1.4">
-          <p id="appendix-A-1.4.1">draft-kwiatkowski-tls-ecdhe-mlkem-02:<a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.4.1">draft-kwiatkowski-tls-ecdhe-mlkem-03:<a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.4.2.1">
-              <p id="appendix-A-1.4.2.1.1">Adds section that mentions supported groups that this document obsoletes.<a href="#appendix-A-1.4.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.4.2.1.1">Adds P-384 combined with ML-KEM-1024<a href="#appendix-A-1.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-1.4.2.2">
-              <p id="appendix-A-1.4.2.2.1">Fix a reference to encapsulation in the FIPS 203.<a href="#appendix-A-1.4.2.2.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.4.2.2.1">Adds text that describes error-handling and outlines how the client and server must ensure the integrity of the key exchange process.<a href="#appendix-A-1.4.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.4.2.3">
+              <p id="appendix-A-1.4.2.3.1">Adds note on the incompatibility of the codepoint name X25519MLKEM768 with <span>[<a href="#hybrid" class="cite xref">hybrid</a>]</span>.<a href="#appendix-A-1.4.2.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.4.2.4">
+              <p id="appendix-A-1.4.2.4.1">Various cosmetic changes.<a href="#appendix-A-1.4.2.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
         <li class="normal" id="appendix-A-1.5">
-          <p id="appendix-A-1.5.1">draft-kwiatkowski-tls-ecdhe-mlkem-01:<a href="#appendix-A-1.5.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.5.1">draft-kwiatkowski-tls-ecdhe-mlkem-02:<a href="#appendix-A-1.5.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.5.2.1">
-              <p id="appendix-A-1.5.2.1.1">Add X25519MLKEM768<a href="#appendix-A-1.5.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.5.2.1.1">Adds section that mentions supported groups that this document obsoletes.<a href="#appendix-A-1.5.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.5.2.2">
+              <p id="appendix-A-1.5.2.2.1">Fix a reference to encapsulation in the FIPS 203.<a href="#appendix-A-1.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
         <li class="normal" id="appendix-A-1.6">
-          <p id="appendix-A-1.6.1">draft-kwiatkowski-tls-ecdhe-mlkem-00:<a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.6.1">draft-kwiatkowski-tls-ecdhe-mlkem-01:<a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.6.2.1">
-              <p id="appendix-A-1.6.2.1.1">Change Kyber name to ML-KEM<a href="#appendix-A-1.6.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-1.6.2.2">
-              <p id="appendix-A-1.6.2.2.1">Swap reference to I-D.cfrg-schwabe-kyber with FIPS-203<a href="#appendix-A-1.6.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-1.6.2.3">
-              <p id="appendix-A-1.6.2.3.1">Change codepoint. New value is equal to old value + 1.<a href="#appendix-A-1.6.2.3.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-1.6.2.1.1">Add X25519MLKEM768<a href="#appendix-A-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
         <li class="normal" id="appendix-A-1.7">
-          <p id="appendix-A-1.7.1">draft-kwiatkowski-tls-ecdhe-kyber-01: Fix size of key shares generated by the client and the server<a href="#appendix-A-1.7.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.7.1">draft-kwiatkowski-tls-ecdhe-mlkem-00:<a href="#appendix-A-1.7.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-A-1.7.2.1">
+              <p id="appendix-A-1.7.2.1.1">Change Kyber name to ML-KEM<a href="#appendix-A-1.7.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.7.2.2">
+              <p id="appendix-A-1.7.2.2.1">Swap reference to I-D.cfrg-schwabe-kyber with FIPS-203<a href="#appendix-A-1.7.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-A-1.7.2.3">
+              <p id="appendix-A-1.7.2.3.1">Change codepoint. New value is equal to old value + 1.<a href="#appendix-A-1.7.2.3.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
 </li>
         <li class="normal" id="appendix-A-1.8">
-          <p id="appendix-A-1.8.1">draft-kwiatkowski-tls-ecdhe-kyber-00: updates following IANA review<a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.8.1">draft-kwiatkowski-tls-ecdhe-kyber-01: Fix size of key shares generated by the client and the server<a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-1.9">
+          <p id="appendix-A-1.9.1">draft-kwiatkowski-tls-ecdhe-kyber-00: updates following IANA review<a href="#appendix-A-1.9.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>

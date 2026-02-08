@@ -339,7 +339,7 @@ Table of Contents
 
 7.4.  Obsoleted Supported Groups
 
-   Experimental code points for pre-standard versions of Kyber786 were
+   Experimental code points for pre-standard versions of Kyber768 were
    added to the TLS registry as X25519Kyber768Draft00 (25497) and
    SecP256r1Kyber768Draft00 (25498).  This document obsoletes these
    entries.  IANA is instructed to modify the recommended field to 'D'
@@ -431,6 +431,28 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc9847>.
 
 Appendix A.  Change log
+
+   *  draft-ietf-tls-ecdhe-mlkem-04:
+
+      -  Status: Sets document category to Standards Track
+
+      -  References: Make [hybrid] normative; add/clarify HKDF reference
+         via RFC 5869; update to RFC 9847 (replacing draft-ietf-tls-
+         rfc8447bis).
+
+      -  Text: Rename “Discussion” to “Regulatory context” and expand it
+         (incl.  NIST SP 800-227 notes).
+
+      -  IANA/TLS registry: Obsoletes the experimental pre-standard
+         Kyber768 groups X25519Kyber768Draft00 (25497) and
+         SecP256r1Kyber768Draft00 (25498); instruct IANA to set
+         Recommended = “D”, update Reference to this RFC, and update
+         Comments accordingly.
+
+      -  Editorial: Addressed nits, including normalizing reference
+         labels to a consistent format (e.g., RFC7748 instead of rfc7748
+         or ad-hoc labels like HKDF) and renaming NIST references to the
+         NIST-... form.
 
    *  draft-ietf-tls-ecdhe-mlkem-01:
 
