@@ -57,7 +57,7 @@ informative:
   hybrid: I-D.ietf-tls-hybrid-design
   RFC9794:
   RFC9847:
-  HKDF: DOI.10.17487/RFC5869
+  RFC5869:
 
 --- abstract
 
@@ -198,7 +198,7 @@ key establishment.
 
 * **FIPS-compliance**. All groups defined in this document permit FIPS-approved key derivation as per {{NIST-SP-800-56C}}
 and {{NIST-SP-800-135}}. NIST's special publication 800-56Cr2 {{NIST-SP-800-56C}} approves the
-usage of HKDF {{HKDF}} with two distinct shared secrets, with the condition that the first
+usage of HKDF {{RFC5869}} with two distinct shared secrets, with the condition that the first
 one is computed by a FIPS-approved key-establishment scheme. FIPS also requires a certified
 implementation of the scheme, which will remain more ubiquitous for secp256r1 in the coming years. For this reason,
 the ML-KEM shared secret is placed first in X25519MLKEM768, while the ECDH shared secret is placed first
