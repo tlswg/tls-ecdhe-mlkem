@@ -1402,7 +1402,7 @@ key establishment.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <li class="normal" id="section-5-2.1">
           <p id="section-5-2.1.1"><strong>FIPS-compliance</strong>. All groups defined in this document permit FIPS-approved key derivation as per <span>[<a href="#NIST-SP-800-56C" class="cite xref">NIST-SP-800-56C</a>]</span>
 and <span>[<a href="#NIST-SP-800-135" class="cite xref">NIST-SP-800-135</a>]</span>. NIST's special publication 800-56Cr2 <span>[<a href="#NIST-SP-800-56C" class="cite xref">NIST-SP-800-56C</a>]</span> approves the
-usage of HKDF <span>[<a href="#HKDF" class="cite xref">HKDF</a>]</span> with two distinct shared secrets, with the condition that the first
+usage of HKDF <span>[<a href="#RFC5869" class="cite xref">RFC5869</a>]</span> with two distinct shared secrets, with the condition that the first
 one is computed by a FIPS-approved key-establishment scheme. FIPS also requires a certified
 implementation of the scheme, which will remain more ubiquitous for secp256r1 in the coming years. For this reason,
 the ML-KEM shared secret is placed first in X25519MLKEM768, while the ECDH shared secret is placed first
@@ -1624,13 +1624,13 @@ ratified by NIST, version of ML-KEM which is specified in <span>[<a href="#NIST-
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="HKDF">[HKDF]</dt>
-        <dd>
-<span class="refAuthor">Krawczyk, H.</span> and <span class="refAuthor">P. Eronen</span>, <span class="refTitle">"HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"</span>, <span class="refContent">RFC Editor</span>, <span class="seriesInfo">DOI 10.17487/rfc5869</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://doi.org/10.17487/rfc5869">https://doi.org/10.17487/rfc5869</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="hybrid">[hybrid]</dt>
         <dd>
 <span class="refAuthor">Stebila, D.</span>, <span class="refAuthor">Fluhrer, S.</span>, and <span class="refAuthor">S. Gueron</span>, <span class="refTitle">"Hybrid key exchange in TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-hybrid-design-16</span>, <time datetime="2025-09-07" class="refDate">7 September 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-16">https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-16</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5869">[RFC5869]</dt>
+        <dd>
+<span class="refAuthor">Krawczyk, H.</span> and <span class="refAuthor">P. Eronen</span>, <span class="refTitle">"HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"</span>, <span class="seriesInfo">RFC 5869</span>, <span class="seriesInfo">DOI 10.17487/RFC5869</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5869">https://www.rfc-editor.org/rfc/rfc5869</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9794">[RFC9794]</dt>
         <dd>
