@@ -53,8 +53,8 @@ normative:
   NIST-SP-800-56C: DOI.10.6028/NIST.SP.800-56Cr2
   NIST-SP-800-135: DOI.10.6028/NIST.SP.800-135r1
   NIST-SP-800-227: DOI.10.6028/NIST.SP.800-227
-informative:
   hybrid: I-D.ietf-tls-hybrid-design
+informative:
   RFC9794:
   RFC9847:
   RFC5869:
