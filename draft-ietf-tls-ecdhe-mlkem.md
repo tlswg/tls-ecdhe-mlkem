@@ -84,7 +84,7 @@ and specifies code points for the hybrid groups.
 
 This document introduces three new supported groups for hybrid post-quantum key agreements in TLS 1.3: the X25519MLKEM768,
 SecP256r1MLKEM768, and SecP384r1MLKEM1024 which combine ML-KEM with ECDH in the manner of {{hybrid}}. Any of the hybrid groups
-specified in this document may be implemented in a FIPS approved way as discussed in {{regulatory-context}}.
+specified in this document may be implemented in a FIPS-approved way as discussed in {{regulatory-context}}.
 
 * The first one uses X25519 {{RFC7748}}, is widely deployed, and often serves as the most practical choice for a single post-quantum/traditional (PQ/T) hybrid combiner {{RFC9794}} in TLS 1.3.
 
