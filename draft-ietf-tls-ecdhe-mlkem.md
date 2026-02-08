@@ -55,7 +55,7 @@ normative:
   NIST-SP-800-227: DOI.10.6028/NIST.SP.800-227
 informative:
   hybrid: I-D.ietf-tls-hybrid-design
-  tlsiana: I-D.ietf-tls-rfc8447bis
+  tlsiana: 10.17487/RFC9847
   HKDF: DOI.10.17487/RFC5869
   rfc9794:
 
