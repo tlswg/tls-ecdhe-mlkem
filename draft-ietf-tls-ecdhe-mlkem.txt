@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Standards Track                           P. Kampanakis
-Expires: 9 August 2026                                               AWS
+Expires: 12 August 2026                                              AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                         5 February 2026
+                                                         8 February 2026
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -55,7 +55,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 August 2026.
+   This Internet-Draft will expire on 12 August 2026.
 
 Copyright Notice
 
@@ -303,10 +303,11 @@ Table of Contents
 7.  IANA Considerations
 
    This document requests/registers three new entries to the TLS
-   Supported Groups registry, according to the procedures in Section 6
-   of [tlsiana].  These identifiers are to be used with the final,
-   ratified by NIST, version of ML-KEM which is specified in
-   [NIST-FIPS-203].
+   Supported Groups registry (https://www.iana.org/assignments/tls-
+   parameters/tls-parameters.xhtml#tls-parameters-8), according to the
+   procedures in Section 6 of [tlsiana].  These identifiers are to be
+   used with the final, ratified by NIST, version of ML-KEM which is
+   specified in [NIST-FIPS-203].
 
 7.1.  X25519MLKEM768
 
