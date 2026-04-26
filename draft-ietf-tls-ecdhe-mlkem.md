@@ -51,13 +51,10 @@ normative:
   NIST-FIPS-186: DOI.10.6028/NIST.FIPS.186-5
   NIST-FIPS-203: DOI.10.6028/NIST.FIPS.203
   NIST-SP-800-56A: DOI.10.6028/NIST.SP.800-56Ar3
-  NIST-SP-800-56C: DOI.10.6028/NIST.SP.800-56Cr2
-  NIST-SP-800-135: DOI.10.6028/NIST.SP.800-135r1
   NIST-SP-800-227: DOI.10.6028/NIST.SP.800-227
 informative:
   RFC9794:
   RFC9847:
-  RFC5869:
 
 --- abstract
 
@@ -83,8 +80,7 @@ and specifies code points for the hybrid groups.
 # Motivation
 
 This document introduces three new supported groups for hybrid post-quantum key agreements in TLS 1.3: the X25519MLKEM768,
-SecP256r1MLKEM768, and SecP384r1MLKEM1024 which combine ML-KEM with ECDH in the manner of {{hybrid}}. Any of the hybrid groups
-specified in this document may be implemented in a FIPS-approved way as discussed in {{regulatory-context}}.
+SecP256r1MLKEM768, and SecP384r1MLKEM1024 which combine ML-KEM with ECDH in the manner of {{hybrid}}.
 
 * The first one uses X25519 {{RFC7748}}, is widely deployed, and often serves as the most practical choice for a single post-quantum/traditional (PQ/T) hybrid combiner {{RFC9794}} in TLS 1.3.
 
@@ -189,24 +185,6 @@ For all groups, both client and server MUST calculate the ECDH part of the
 shared secret as described in {{Section 7.4.2 of !RFC8446}}, including the
 all-zero shared secret check for X25519, and abort the connection with an
 illegal_parameter alert if it fails.
-
-# Regulatory Context {#regulatory-context}
-
-This section provides informal notes on how the hybrid key agreement mechanisms defined
-in this document relate to existing NIST guidance on key derivation and hybrid
-key establishment.
-
-* **FIPS-compliance**. All groups defined in this document permit FIPS-approved key derivation as per {{NIST-SP-800-56C}}
-and {{NIST-SP-800-135}}. NIST's special publication 800-56Cr2 {{NIST-SP-800-56C}} approves the
-usage of HKDF {{RFC5869}} with two distinct shared secrets, with the condition that the first
-one is computed by a FIPS-approved key-establishment scheme. FIPS also requires a certified
-implementation of the scheme, which will remain more ubiquitous for secp256r1 in the coming years. For this reason,
-the ML-KEM shared secret is placed first in X25519MLKEM768, while the ECDH shared secret is placed first
-in SecP256r1MLKEM768 and SecP384r1MLKEM1024. This means that for SecP256r1MLKEM768 and SecP384r1MLKEM1024,
-the ECDH implementation must be certified whereas the ML-KEM implementation does not require certification. In
-contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.
-
-* **SP800-227 compliance**. The NIST Special Publication 800-227 {{NIST-SP-800-227}} provides general guidance on the design and use of key-encapsulation mechanisms, including hybrid constructions. The key agreements defined in this document follow the principles described in Section 4.6 of {{NIST-SP-800-227}}, which discusses the combination of post-quantum and classical key-establishment schemes and the use of approved key combiners. In particular, the shared-secret concatenation and HKDF-based derivation used by the TLS 1.3 are consistent with the composite-KEM constructions and key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of {{NIST-SP-800-227}}. Section 4.6.3 of {{NIST-SP-800-227}} further provides relevant security considerations for hybrid KEM designs underlying the approach used in this document.
 
 # Security Considerations
 
