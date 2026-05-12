@@ -237,7 +237,7 @@ ratified by NIST, version of ML-KEM which is specified in {{NIST-FIPS-203}}.
  : Y
 
  Recommended:
- : N
+ : Y
 
  Reference:
  : This document
