@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Standards Track                           P. Kampanakis
-Expires: 12 August 2026                                              AWS
+Expires: 27 November 2026                                            AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                         8 February 2026
+                                                             26 May 2026
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 August 2026.
+   This Internet-Draft will expire on 27 November 2026.
 
 Copyright Notice
 
@@ -315,7 +315,7 @@ Table of Contents
    Value:  4588 (0x11EC)
    Description:  X25519MLKEM768
    DTLS-OK:  Y
-   Recommended:  N
+   Recommended:  Y
    Reference:  This document
    Comment:  Combining X25519 ECDH with ML-KEM-768
 
