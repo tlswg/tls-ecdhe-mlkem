@@ -58,6 +58,12 @@ informative:
   RFC9794:
   RFC9847:
   RFC5869:
+  RFC8937:
+  RFC9846:
+  DUALECTLS:
+    title: "On the Practical Exploitability of Dual EC in TLS Implementations"
+    target: <https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf>
+    date: 2014
 
 --- abstract
 
@@ -132,6 +138,12 @@ is the concatenation of the secp384r1 ephemeral share and the ML-KEM-1024
 encapsulation key. The ECDH share is serialized value of the uncompressed ECDH point
 represenation as defined in {{Section 4.2.8.2 of !RFC8446}}. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM).
+
+Note: During ML-KEM encapsulation, a value `m` drawn from a random bit generator is encrypted
+(see {{NIST-FIPS-203}}, algorithm 17 and 20); the client, which holds the decapsulation key,
+then recovers `m` exactly during decapsulation (see {{NIST-FIPS-203}}, algorithm 18).
+Consequently, any information `m` carries about the generator's other outputs is also
+exposed to the client.
 
 ## Server share
 
@@ -219,6 +231,13 @@ especially those that can be applied by remote attackers.
 
 All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in {{Section 6 of hybrid}}.
+
+The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can be used in an
+attack to compromise the state of the insecure RNG itself as described in {{DUALECTLS}}. The `m` value in ML-KEM is an
+additional place where raw RNG output is disclosed to an active attacker. Because the `m` value in ML-KEM is randomly
+generated and transmitted to the client, it is important to follow the RBG guidance in {{NIST-FIPS-203}} and the random number
+generation guidance in {{RFC9846}}. Implementers MAY choose to implement mechanisms from {{RFC8937}} for additional
+protection across sessions.
 
 # IANA Considerations
 
