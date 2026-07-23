@@ -232,12 +232,16 @@ especially those that can be applied by remote attackers.
 All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in {{Section 6 of hybrid}}.
 
-The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can be used in an
-attack to compromise the state of the insecure RNG itself as described in {{DUALECTLS}}. The `m` value in ML-KEM is an
-additional place where raw RNG output is disclosed to an active attacker. Because the `m` value in ML-KEM is randomly
-generated and transmitted to the client, it is important to follow the RBG guidance in {{NIST-FIPS-203}} and the random number
-generation guidance in {{RFC9846}}. Implementers MAY choose to implement mechanisms from {{RFC8937}} for additional
-protection across sessions.
+The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
+be used in an attack to compromise the state of the insecure RNG itself as described in {{DUALECTLS}}.
+The `m` value in ML-KEM is an additional place where RNG output is disclosed to an active attacker. Because
+the `m` value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers MUST
+follow the RBG guidance in {{NIST-FIPS-203}} and the random number generation guidance in {{Section C.1 of RFC9846}}.
+Implementers MAY choose to implement mechanisms from {{RFC8937}} for additional protection across sessions.
+
+In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars MUST nevertheless be
+generated using a cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}},
+and for X25519 as described in {{RFC7748}}; the guidance in {{Section C.1 of RFC9846}} applies here as well.
 
 # IANA Considerations
 
@@ -317,6 +321,7 @@ Experimental code points for pre-standard versions of Kyber768 were added to the
 
 * draft-ietf-tls-ecdhe-mlkem-06:
   * References: RFC 9846 moves from informative to normative.
+  * Security Considerations: Clarify that, unlike the ML-KEM `m` value, ECDH ephemeral scalars are not directly disclosed, and add RBG requirements for scalar generation per SP 800-56A and RFC 9846 Appendix C.1.
 
 * draft-ietf-tls-ecdhe-mlkem-05:
   * Sets RECOMMENDED=Y on X2519-MLKEM768
