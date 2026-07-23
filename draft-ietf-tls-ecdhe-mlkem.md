@@ -62,7 +62,7 @@ informative:
   RFC8937:
   DUALECTLS:
     title: "On the Practical Exploitability of Dual EC in TLS Implementations"
-    target: <https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf>
+    target: https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf
     date: 2014
 
 --- abstract
