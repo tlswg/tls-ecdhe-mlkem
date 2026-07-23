@@ -447,8 +447,8 @@ Table of Contents
    [DUALECTLS]
               "On the Practical Exploitability of Dual EC in TLS
               Implementations", 2014,
-              <<https://www.usenix.org/system/files/conference/
-              usenixsecurity14/sec14-paper-checkoway.pdf>>.
+              <https://www.usenix.org/system/files/conference/
+              usenixsecurity14/sec14-paper-checkoway.pdf>.
 
    [RFC5869]  Krawczyk, H. and P. Eronen, "HMAC-based Extract-and-Expand
               Key Derivation Function (HKDF)", RFC 5869,
