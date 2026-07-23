@@ -47,6 +47,7 @@ author:
 
 normative:
   RFC7748:
+  RFC9846:
   hybrid: I-D.ietf-tls-hybrid-design
   NIST-FIPS-186: DOI.10.6028/NIST.FIPS.186-5
   NIST-FIPS-203: DOI.10.6028/NIST.FIPS.203
@@ -59,7 +60,6 @@ informative:
   RFC9847:
   RFC5869:
   RFC8937:
-  RFC9846:
   DUALECTLS:
     title: "On the Practical Exploitability of Dual EC in TLS Implementations"
     target: <https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf>
@@ -314,6 +314,12 @@ Experimental code points for pre-standard versions of Kyber768 were added to the
 --- back
 
 # Change log
+
+* draft-ietf-tls-ecdhe-mlkem-06:
+  * References: RFC 9846 moves from informative to normative.
+
+* draft-ietf-tls-ecdhe-mlkem-05:
+  * Sets RECOMMENDED=Y on X2519-MLKEM768
 
 * draft-ietf-tls-ecdhe-mlkem-04:
   * Status: Sets document category to Standards Track
