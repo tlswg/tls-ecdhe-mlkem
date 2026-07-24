@@ -314,13 +314,13 @@ Table of Contents
    [DUALECTLS].  The m value in ML-KEM is an additional place where RNG
    output is disclosed to an active attacker.  Because the m value in
    ML-KEM is randomly generated, encrypted and transmitted to the
-   client, implementers MUST follow the RBG guidance in [NIST-FIPS-203]
-   and the random number generation guidance in Appendix C.1 of
-   [RFC9846].  Implementers MAY choose to implement mechanisms from
-   [RFC8937] for additional protection across sessions.
+   client, implementers should follow the RBG guidance in
+   [NIST-FIPS-203] and the random number generation guidance in
+   Appendix C.1 of [RFC9846].  Implementers can choose to implement
+   mechanisms from [RFC8937] for additional protection across sessions.
 
    In contrast, the ECDH ephemeral scalars are never directly disclosed.
-   Ephemeral scalars MUST nevertheless be generated using a
+   Ephemeral scalars should nevertheless be generated using a
    cryptographically secure RNG: for secp256r1 and secp384r1 as required
    by [NIST-SP-800-56A], and for X25519 as described in [RFC7748]; the
    guidance in Appendix C.1 of [RFC9846] applies here as well.

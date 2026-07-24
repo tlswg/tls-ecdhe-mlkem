@@ -1436,10 +1436,10 @@ and shared secrets, which complies with the requirements described in <span><a h
 <p id="section-6-4">The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
 be used in an attack to compromise the state of the insecure RNG itself as described in <span>[<a href="#DUALECTLS" class="cite xref">DUALECTLS</a>]</span>.
 The <code>m</code> value in ML-KEM is an additional place where RNG output is disclosed to an active attacker. Because
-the <code>m</code> value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers <span class="bcp14">MUST</span>
+the <code>m</code> value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers should
 follow the RBG guidance in <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span> and the random number generation guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
-Implementers <span class="bcp14">MAY</span> choose to implement mechanisms from <span>[<a href="#RFC8937" class="cite xref">RFC8937</a>]</span> for additional protection across sessions.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars <span class="bcp14">MUST</span> nevertheless be
+Implementers can choose to implement mechanisms from <span>[<a href="#RFC8937" class="cite xref">RFC8937</a>]</span> for additional protection across sessions.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars should nevertheless be
 generated using a cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>,
 and for X25519 as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-5" class="pilcrow">¶</a></p>
 </section>
