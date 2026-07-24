@@ -130,13 +130,13 @@ reversed. This is due to historical reasons.
 When the SecP256r1MLKEM768 group is negotiated, the client's key_exchange value
 is the concatenation of the secp256r1 ephemeral share and ML-KEM-768 encapsulation key.
 The ECDHE share is the serialized value of the uncompressed ECDH point representation as
-defined  in {{Section 4.2.8.2 of !RFC8446}}. The size of the client share is 1249 bytes
+defined  in {{Section 4.2.8.2 of !RFC9846}}. The size of the client share is 1249 bytes
 (65 bytes for the secp256r1 part and 1184 bytes for ML-KEM).
 
 When the SecP384r1MLKEM1024 group is negotiated, the client's key_exchange value
 is the concatenation of the secp384r1 ephemeral share and the ML-KEM-1024
 encapsulation key. The ECDH share is serialized value of the uncompressed ECDH point
-represenation as defined in {{Section 4.2.8.2 of !RFC8446}}. The size of the
+represenation as defined in {{Section 4.2.8.2 of !RFC9846}}. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM).
 
 Note: During ML-KEM encapsulation, a value `m` drawn from a random bit generator is encrypted
@@ -175,7 +175,7 @@ If ML-KEM decapsulation fails for any other reason, the connection MUST
 be aborted with an internal_error alert.
 
 For all groups, both client and server MUST process the ECDH part
-as described in {{Section 4.2.8.2 of !RFC8446}}, including all validity checks,
+as described in {{Section 4.2.8.2 of !RFC9846}}, including all validity checks,
 and abort with an illegal_parameter alert if it fails.
 
 ## Shared secret
@@ -187,18 +187,18 @@ shared secret and the X25519 shared secret. The shared secret is 64 bytes
 For SecP256r1MLKEM768, the shared secret is the concatenation of the
 ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDH
 shared secret elliptic curve point represented as an octet string as
-defined in {{Section 7.4.2 of !RFC8446}}.
+defined in {{Section 7.4.2 of !RFC9846}}.
 The size of the shared secret is 64 bytes (32 bytes for each part).
 
 For SecP384r1MLKEM1024, the shared secret is the concatenation of the
 ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDH
 shared secret elliptic curve point represented as an octet string as
-defined in {{Section 7.4.2 of !RFC8446}}.
+defined in {{Section 7.4.2 of !RFC9846}}.
 The size of the shared secret is 80 bytes (48 bytes for the ECDH part and
 32 bytes for the ML-KEM part).
 
 For all groups, both client and server MUST calculate the ECDH part of the
-shared secret as described in {{Section 7.4.2 of !RFC8446}}, including the
+shared secret as described in {{Section 7.4.2 of !RFC9846}}, including the
 all-zero shared secret check for X25519, and abort the connection with an
 illegal_parameter alert if it fails.
 
