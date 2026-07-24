@@ -235,11 +235,11 @@ and shared secrets, which complies with the requirements described in {{Section 
 The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
 be used in an attack to compromise the state of the insecure RNG itself as described in {{DUALECTLS}}.
 The `m` value in ML-KEM is an additional place where RNG output is disclosed to an active attacker. Because
-the `m` value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers MUST
+the `m` value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers should
 follow the RBG guidance in {{NIST-FIPS-203}} and the random number generation guidance in {{Section C.1 of RFC9846}}.
-Implementers MAY choose to implement mechanisms from {{RFC8937}} for additional protection across sessions.
+Implementers can choose to implement mechanisms from {{RFC8937}} for additional protection across sessions.
 
-In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars MUST nevertheless be
+In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars should nevertheless be
 generated using a cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}},
 and for X25519 as described in {{RFC7748}}; the guidance in {{Section C.1 of RFC9846}} applies here as well.
 
