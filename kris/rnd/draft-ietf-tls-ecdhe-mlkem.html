@@ -1329,11 +1329,6 @@ is the concatenation of the secp384r1 ephemeral share and the ML-KEM-1024
 encapsulation key. The ECDH share is serialized value of the uncompressed ECDH point
 representation as defined in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-4.3.8.2" class="relref">Section 4.3.8.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM).<a href="#section-4.1-4" class="pilcrow">¶</a></p>
-<p id="section-4.1-5">Note: During ML-KEM encapsulation, a value <code>m</code> drawn from a random bit generator is encrypted
-(see <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>, Algorithms 17 and 20); the client, which holds the decapsulation key,
-then recovers <code>m</code> exactly during decapsulation (see <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>, Algorithm 18).
-Consequently, any information <code>m</code> carries about the generator's other outputs is also
-exposed to the client.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="server-share">
@@ -1434,17 +1429,21 @@ are encouraged to use implementations resistant to side-channel attacks, especia
 by remote attackers.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <p id="section-6-3">All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-16#section-6" class="relref">Section 6</a> of [<a href="#hybrid" class="cite xref">hybrid</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
-<p id="section-6-4">The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
+<p id="section-6-4">During ML-KEM encapsulation, encapsulation randomness <code>m</code> is drawn from a random bit generator and encrypted
+(see <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>, Algorithms 17 and 20); the client, which holds the decapsulation key, then recovers <code>m</code>
+exactly during decapsulation (see <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>, Algorithm 18). Consequently, any information <code>m</code> carries
+about the generator's other outputs is also exposed to the client.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
 be used in an attack to compromise the state of the insecure RNG itself as described in <span>[<a href="#DUALECTLS" class="cite xref">DUALECTLS</a>]</span>.
-The <code>m</code> value in ML-KEM is an additional place where RNG output is disclosed to an active attacker. Because
-the <code>m</code> value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers should
-follow the RBG guidance in <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span> and the random number generation guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
-Implementers can choose to implement mechanisms from <span>[<a href="#RFC8937" class="cite xref">RFC8937</a>]</span> for additional protection across sessions.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">In contrast, the ECDH ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
+The encapsulation randomness <code>m</code> in ML-KEM is an additional place where RNG output is disclosed to an active attacker.
+Implementers should follow the RBG guidance in <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span> and the random number generation guidance in
+<span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>. Implementers can choose to implement mechanisms from <span>[<a href="#RFC8937" class="cite xref">RFC8937</a>]</span> for additional protection
+across sessions.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">In contrast, the ECDH ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
 any passive observer with access to a cryptographically relevant quantum computer (CRQC) can recover the scalar,
 which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
 cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>, and for X25519
-as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-5" class="pilcrow">¶</a></p>
+as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
