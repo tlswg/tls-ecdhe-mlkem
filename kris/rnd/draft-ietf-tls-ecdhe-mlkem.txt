@@ -97,7 +97,7 @@ Table of Contents
 
 1.  Introduction
 
-   ML-KEM is a key encapsulation mechanism (KEM) defined in the
+   ML-KEM is a key encapsulation mechanism (KEM) defined in
    [NIST-FIPS-203].  It is designed to withstand cryptanalytic attacks
    from quantum computers.
 
@@ -183,15 +183,15 @@ Table of Contents
    When the SecP384r1MLKEM1024 group is negotiated, the client's
    key_exchange value is the concatenation of the secp384r1 ephemeral
    share and the ML-KEM-1024 encapsulation key.  The ECDH share is
-   serialized value of the uncompressed ECDH point represenation as
+   serialized value of the uncompressed ECDH point representation as
    defined in Section 4.3.8.2 of [RFC9846].  The size of the client
    share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-
    KEM).
 
    Note: During ML-KEM encapsulation, a value m drawn from a random bit
-   generator is encrypted (see [NIST-FIPS-203], algorithm 17 and 20);
+   generator is encrypted (see [NIST-FIPS-203], Algorithms 17 and 20);
    the client, which holds the decapsulation key, then recovers m
-   exactly during decapsulation (see [NIST-FIPS-203], algorithm 18).
+   exactly during decapsulation (see [NIST-FIPS-203], Algorithm 18).
    Consequently, any information m carries about the generator's other
    outputs is also exposed to the client.
 
@@ -215,7 +215,7 @@ Table of Contents
    secp384r1 share encoded in the same way as the client share and an
    ML-KEM ciphertext returned from encapsulation to the client's
    encapsulation key.  The size of the server share is 1665 bytes (1568
-   bytes for the ML-KEM part and 97 bytes for secp384r1)
+   bytes for the ML-KEM part and 97 bytes for secp384r1).
 
    For all groups, the server MUST perform the encapsulation key check
    described in Section 7.2 of [NIST-FIPS-203] on the client's
@@ -285,10 +285,10 @@ Table of Contents
       described in Section 4.6 of [NIST-SP-800-227], which discusses the
       combination of post-quantum and classical key-establishment
       schemes and the use of approved key combiners.  In particular, the
-      shared-secret concatenation and HKDF-based derivation used by the
-      TLS 1.3 are consistent with the composite-KEM constructions and
-      key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2
-      of [NIST-SP-800-227].  Section 4.6.3 of [NIST-SP-800-227] further
+      shared-secret concatenation and HKDF-based derivation used by TLS
+      1.3 are consistent with the composite-KEM constructions and key-
+      combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of
+      [NIST-SP-800-227].  Section 4.6.3 of [NIST-SP-800-227] further
       provides relevant security considerations for hybrid KEM designs
       underlying the approach used in this document.
 
@@ -481,7 +481,7 @@ Appendix A.  Change log
 
    *  draft-ietf-tls-ecdhe-mlkem-05:
 
-      -  Sets RECOMMENDED=Y on X2519-MLKEM768
+      -  Sets RECOMMENDED=Y on X25519MLKEM768
 
    *  draft-ietf-tls-ecdhe-mlkem-04:
 
