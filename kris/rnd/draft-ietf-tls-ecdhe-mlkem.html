@@ -1429,8 +1429,9 @@ contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.<a hre
 <p id="section-6-1">The same security considerations as those described in <span>[<a href="#hybrid" class="cite xref">hybrid</a>]</span> apply to the approach used by this document.
 The security analysis relies crucially on the TLS 1.3 message transcript, and one cannot assume a similar
 hybridisation is secure in other protocols.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2"><span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> includes guidelines and requirements for implementations on using KEMs securely. Implementers are encouraged to use implementations resistant to side-channel attacks,
-especially those that can be applied by remote attackers.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-2"><span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> includes guidelines and requirements for implementations on using KEMs securely. Implementers
+are encouraged to use implementations resistant to side-channel attacks, especially those that can be applied
+by remote attackers.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <p id="section-6-3">All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-hybrid-design-16#section-6" class="relref">Section 6</a> of [<a href="#hybrid" class="cite xref">hybrid</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
 <p id="section-6-4">The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
@@ -1439,9 +1440,11 @@ The <code>m</code> value in ML-KEM is an additional place where RNG output is di
 the <code>m</code> value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers should
 follow the RBG guidance in <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span> and the random number generation guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
 Implementers can choose to implement mechanisms from <span>[<a href="#RFC8937" class="cite xref">RFC8937</a>]</span> for additional protection across sessions.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars should nevertheless be
-generated using a cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>,
-and for X25519 as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-5">In contrast, the ECDH ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
+any passive observer with access to a cryptographically relevant quantum computer (CRQC) can recover the scalar,
+which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
+cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>, and for X25519
+as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">

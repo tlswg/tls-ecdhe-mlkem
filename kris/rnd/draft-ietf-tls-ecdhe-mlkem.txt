@@ -319,8 +319,11 @@ Table of Contents
    Appendix C.1 of [RFC9846].  Implementers can choose to implement
    mechanisms from [RFC8937] for additional protection across sessions.
 
-   In contrast, the ECDH ephemeral scalars are never directly disclosed.
-   Ephemeral scalars should nevertheless be generated using a
+   In contrast, the ECDH ephemeral scalars taken from the RNG are never
+   directly disclosed to the peer.  However, any passive observer with
+   access to a cryptographically relevant quantum computer (CRQC) can
+   recover the scalar, which is derived directly from RNG output.
+   Regardless, ephemeral scalars should always be generated using a
    cryptographically secure RNG: for secp256r1 and secp384r1 as required
    by [NIST-SP-800-56A], and for X25519 as described in [RFC7748]; the
    guidance in Appendix C.1 of [RFC9846] applies here as well.
