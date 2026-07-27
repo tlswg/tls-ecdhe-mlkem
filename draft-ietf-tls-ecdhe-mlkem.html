@@ -1444,6 +1444,8 @@ any passive observer with access to a cryptographically relevant quantum compute
 which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
 cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>, and for X25519
 as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">If the same insecure RNG is used by both algorithms then a disclosure of state by one of the algorithms will effect
+the security of the other algorithm as well.<a href="#section-6-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">

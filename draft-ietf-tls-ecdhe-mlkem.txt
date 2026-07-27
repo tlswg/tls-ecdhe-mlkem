@@ -327,6 +327,10 @@ Table of Contents
    by [NIST-SP-800-56A], and for X25519 as described in [RFC7748]; the
    guidance in Appendix C.1 of [RFC9846] applies here as well.
 
+   If the same insecure RNG is used by both algorithms then a disclosure
+   of state by one of the algorithms will effect the security of the
+   other algorithm as well.
+
 7.  IANA Considerations
 
    This document requests/registers three new entries to the TLS
