@@ -226,8 +226,9 @@ The same security considerations as those described in {{hybrid}} apply to the a
 The security analysis relies crucially on the TLS 1.3 message transcript, and one cannot assume a similar
 hybridisation is secure in other protocols.
 
-{{NIST-SP-800-227}} includes guidelines and requirements for implementations on using KEMs securely. Implementers are encouraged to use implementations resistant to side-channel attacks,
-especially those that can be applied by remote attackers.
+{{NIST-SP-800-227}} includes guidelines and requirements for implementations on using KEMs securely. Implementers
+are encouraged to use implementations resistant to side-channel attacks, especially those that can be applied
+by remote attackers.
 
 All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in {{Section 6 of hybrid}}.
@@ -239,9 +240,11 @@ the `m` value in ML-KEM is randomly generated, encrypted and transmitted to the 
 follow the RBG guidance in {{NIST-FIPS-203}} and the random number generation guidance in {{Section C.1 of RFC9846}}.
 Implementers can choose to implement mechanisms from {{RFC8937}} for additional protection across sessions.
 
-In contrast, the ECDH ephemeral scalars are never directly disclosed. Ephemeral scalars should nevertheless be
-generated using a cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}},
-and for X25519 as described in {{RFC7748}}; the guidance in {{Section C.1 of RFC9846}} applies here as well.
+In contrast, the ECDH ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
+any passive observer with access to a cryptographically relevant quantum computer (CRQC) can recover the scalar,
+which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
+cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}}, and for X25519
+as described in {{RFC7748}}; the guidance in {{Section C.1 of RFC9846}} applies here as well.
 
 # IANA Considerations
 
