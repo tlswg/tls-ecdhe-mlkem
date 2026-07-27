@@ -245,6 +245,9 @@ which is derived directly from RNG output. Regardless, ephemeral scalars should 
 cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}}, and for X25519
 as described in {{RFC7748}}; the guidance in {{Section C.1 of RFC9846}} applies here as well.
 
+If the same insecure RNG is used by both algorithms then a disclosure of state by one of the algorithms will effect
+the security of the other algorithm as well.
+
 # IANA Considerations
 
 This document requests/registers three new entries to the [TLS Supported Groups registry](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8), according to the procedures in {{Section 6 of RFC9847}}. These identifiers are to be used with the final,
