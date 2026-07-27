@@ -139,12 +139,6 @@ encapsulation key. The ECDH share is serialized value of the uncompressed ECDH p
 representation as defined in {{Section 4.3.8.2 of !RFC9846}}. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM).
 
-Note: During ML-KEM encapsulation, a value `m` drawn from a random bit generator is encrypted
-(see {{NIST-FIPS-203}}, Algorithms 17 and 20); the client, which holds the decapsulation key,
-then recovers `m` exactly during decapsulation (see {{NIST-FIPS-203}}, Algorithm 18).
-Consequently, any information `m` carries about the generator's other outputs is also
-exposed to the client.
-
 ## Server share
 
 When the X25519MLKEM768 group is negotiated, the server's key exchange
@@ -233,12 +227,17 @@ by remote attackers.
 All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in {{Section 6 of hybrid}}.
 
+During ML-KEM encapsulation, encapsulation randomness `m` is drawn from a random bit generator and encrypted
+(see {{NIST-FIPS-203}}, Algorithms 17 and 20); the client, which holds the decapsulation key, then recovers `m`
+exactly during decapsulation (see {{NIST-FIPS-203}}, Algorithm 18). Consequently, any information `m` carries
+about the generator's other outputs is also exposed to the client.
+
 The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
 be used in an attack to compromise the state of the insecure RNG itself as described in {{DUALECTLS}}.
-The `m` value in ML-KEM is an additional place where RNG output is disclosed to an active attacker. Because
-the `m` value in ML-KEM is randomly generated, encrypted and transmitted to the client, implementers should
-follow the RBG guidance in {{NIST-FIPS-203}} and the random number generation guidance in {{Section C.1 of RFC9846}}.
-Implementers can choose to implement mechanisms from {{RFC8937}} for additional protection across sessions.
+The encapsulation randomness `m` in ML-KEM is an additional place where RNG output is disclosed to an active attacker.
+Implementers should follow the RBG guidance in {{NIST-FIPS-203}} and the random number generation guidance in
+{{Section C.1 of RFC9846}}. Implementers can choose to implement mechanisms from {{RFC8937}} for additional protection
+across sessions.
 
 In contrast, the ECDH ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
 any passive observer with access to a cryptographically relevant quantum computer (CRQC) can recover the scalar,
