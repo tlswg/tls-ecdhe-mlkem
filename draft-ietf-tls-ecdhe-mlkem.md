@@ -76,8 +76,8 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 - that combine the post-quantum ML-KEM
 
 # Introduction
 
-ML-KEM is a key encapsulation mechanism (KEM) defined in the {{NIST-FIPS-203}}. It is designed to
-withstand cryptanalytic attacks from quantum computers.
+ML-KEM is a key encapsulation mechanism (KEM) defined in {{NIST-FIPS-203}}. It is designed to withstand
+cryptanalytic attacks from quantum computers.
 
 The {{hybrid}} document defines a framework for combining traditional key exchanges with next-generation key
 exchange in TLS 1.3. The goal of this approach is to provide security against both classical and quantum
@@ -136,12 +136,12 @@ defined  in {{Section 4.3.8.2 of !RFC9846}}. The size of the client share is 124
 When the SecP384r1MLKEM1024 group is negotiated, the client's key_exchange value
 is the concatenation of the secp384r1 ephemeral share and the ML-KEM-1024
 encapsulation key. The ECDH share is serialized value of the uncompressed ECDH point
-represenation as defined in {{Section 4.3.8.2 of !RFC9846}}. The size of the
+representation as defined in {{Section 4.3.8.2 of !RFC9846}}. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM).
 
 Note: During ML-KEM encapsulation, a value `m` drawn from a random bit generator is encrypted
-(see {{NIST-FIPS-203}}, algorithm 17 and 20); the client, which holds the decapsulation key,
-then recovers `m` exactly during decapsulation (see {{NIST-FIPS-203}}, algorithm 18).
+(see {{NIST-FIPS-203}}, Algorithms 17 and 20); the client, which holds the decapsulation key,
+then recovers `m` exactly during decapsulation (see {{NIST-FIPS-203}}, Algorithm 18).
 Consequently, any information `m` carries about the generator's other outputs is also
 exposed to the client.
 
@@ -163,7 +163,7 @@ value is the concatenation of the server's ephemeral secp384r1 share
 encoded in the same way as the client share and an ML-KEM ciphertext returned
 from encapsulation to the client's encapsulation key. The size of the server
 share is 1665 bytes (1568 bytes for the ML-KEM part and 97 bytes for
-secp384r1)
+secp384r1).
 
 For all groups, the server MUST perform the encapsulation key check
 described in Section 7.2 of {{NIST-FIPS-203}} on the client's encapsulation
@@ -218,7 +218,7 @@ in SecP256r1MLKEM768 and SecP384r1MLKEM1024. This means that for SecP256r1MLKEM7
 the ECDH implementation must be certified whereas the ML-KEM implementation does not require certification. In
 contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.
 
-* **SP800-227 compliance**. The NIST Special Publication 800-227 {{NIST-SP-800-227}} provides general guidance on the design and use of key-encapsulation mechanisms, including hybrid constructions. The key agreements defined in this document follow the principles described in Section 4.6 of {{NIST-SP-800-227}}, which discusses the combination of post-quantum and classical key-establishment schemes and the use of approved key combiners. In particular, the shared-secret concatenation and HKDF-based derivation used by the TLS 1.3 are consistent with the composite-KEM constructions and key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of {{NIST-SP-800-227}}. Section 4.6.3 of {{NIST-SP-800-227}} further provides relevant security considerations for hybrid KEM designs underlying the approach used in this document.
+* **SP800-227 compliance**. The NIST Special Publication 800-227 {{NIST-SP-800-227}} provides general guidance on the design and use of key-encapsulation mechanisms, including hybrid constructions. The key agreements defined in this document follow the principles described in Section 4.6 of {{NIST-SP-800-227}}, which discusses the combination of post-quantum and classical key-establishment schemes and the use of approved key combiners. In particular, the shared-secret concatenation and HKDF-based derivation used by TLS 1.3 are consistent with the composite-KEM constructions and key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of {{NIST-SP-800-227}}. Section 4.6.3 of {{NIST-SP-800-227}} further provides relevant security considerations for hybrid KEM designs underlying the approach used in this document.
 
 # Security Considerations
 
@@ -327,7 +327,7 @@ Experimental code points for pre-standard versions of Kyber768 were added to the
   * Security Considerations: Clarify that, unlike the ML-KEM `m` value, ECDH ephemeral scalars are not directly disclosed, and add RBG requirements for scalar generation per SP 800-56A and RFC 9846 Appendix C.1.
 
 * draft-ietf-tls-ecdhe-mlkem-05:
-  * Sets RECOMMENDED=Y on X2519-MLKEM768
+  * Sets RECOMMENDED=Y on X25519MLKEM768
 
 * draft-ietf-tls-ecdhe-mlkem-04:
   * Status: Sets document category to Standards Track
