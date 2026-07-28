@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Post-Quantum Hybrid ECDHE-MLKEM Key Agreement for TLS 1.3</title>
+<title>Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3</title>
 <meta content="Krzysztof Kwiatkowski" name="author">
 <meta content="Panos Kampanakis" name="author">
 <meta content="Bas Westerbaan" name="author">
@@ -13,7 +13,7 @@
        This document defines three hybrid key agreement mechanisms for TLS 1.3 -- X25519MLKEM768,
 SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KEM
 (Module-Lattice-Based Key Encapsulation Mechanism) with an ECDHE
-(Elliptic Curve Diffie-Hellman) exchange. 
+(Ephemeral Elliptic Curve Diffie-Hellman) exchange. 
     " name="description">
 <meta content="xml2rfc 3.34.0" name="generator">
 <meta content="ECDH" name="keyword">
@@ -1053,12 +1053,12 @@ svg {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">ECDHE-MLKEM for TLS 1.3</td>
+<td class="center">PQ/T Hybrids for TLS 1.3</td>
 <td class="right">July 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kwiatkowski, et al.</td>
-<td class="center">Expires 28 January 2027</td>
+<td class="center">Expires 29 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1071,12 @@ svg {
 <dd class="internet-draft">draft-ietf-tls-ecdhe-mlkem-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-27" class="published">27 July 2026</time>
+<time datetime="2026-07-28" class="published">28 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-28">28 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-01-29">29 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1098,13 +1098,13 @@ svg {
 </dd>
 </dl>
 </div>
-<h1 id="title">Post-Quantum Hybrid ECDHE-MLKEM Key Agreement for TLS 1.3</h1>
+<h1 id="title">Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document defines three hybrid key agreement mechanisms for TLS 1.3 -- X25519MLKEM768,
 SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KEM
 (Module-Lattice-Based Key Encapsulation Mechanism) with an ECDHE
-(Elliptic Curve Diffie-Hellman) exchange.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+(Ephemeral Elliptic Curve Diffie-Hellman) exchange.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1141,7 +1141,7 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 28 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1175,14 +1175,9 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-motivation" class="internal xref">Motivation</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
-</li>
-            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-negotiated-groups" class="internal xref">Negotiated Groups</a></p>
@@ -1244,12 +1239,12 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">ML-KEM is a key encapsulation mechanism (KEM) defined in the <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>. It is designed to
-withstand cryptanalytic attacks from quantum computers.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">ML-KEM is a key encapsulation mechanism (KEM) defined in <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>. It is designed to withstand
+cryptanalytic attacks from quantum computers.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2"><span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> defines a framework for combining traditional key exchanges with next-generation key
 exchange in TLS 1.3. The goal of this approach is to provide security against both classical and quantum
 adversaries while maintaining compatibility with existing infrastructure and protocols.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document applies the framework to ML-KEM
+<p id="section-1-3">This document applies the framework in <span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> to ML-KEM
 and specifies code points for the hybrid groups.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1258,13 +1253,13 @@ and specifies code points for the hybrid groups.<a href="#section-1-3" class="pi
       <h2 id="name-motivation">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-motivation" class="section-name selfRef">Motivation</a>
       </h2>
-<p id="section-2-1">This document introduces three new supported groups for hybrid post-quantum key agreements in TLS 1.3 -- X25519MLKEM768,
-SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine ML-KEM with Elliptic Curve Diffie-Hellman (ECDH) in the manner
+<p id="section-2-1">This document introduces three new supported groups for Post-Quantum Traditional (PQ/T) hybrid key agreements in TLS 1.3 -- X25519MLKEM768,
+SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine ML-KEM with Ephemeral Elliptic Curve Diffie-Hellman (ECDHE) in the manner
 described in <span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span>. Any of the hybrid groups
 specified in this document may be implemented in a FIPS-approved way as discussed in <a href="#regulatory-context" class="auto internal xref">Section 5</a>.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2-2.1">
-          <p id="section-2-2.1.1">The first group uses X25519 <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>, is widely deployed, and often serves as the most practical choice for a single post-quantum/traditional (PQ/T) hybrid combiner <span>[<a href="#RFC9794" class="cite xref">RFC9794</a>]</span> in TLS 1.3.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.1.1">The first group uses X25519 <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>, is widely deployed, and often serves as the most practical choice for a single PQ/T hybrid combiner <span>[<a href="#RFC9794" class="cite xref">RFC9794</a>]</span> in TLS 1.3.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.2">
           <p id="section-2-2.2.1">The second group uses secp256r1 (NIST P-256) <span>[<a href="#NIST-FIPS-186" class="cite xref">NIST-FIPS-186</a>]</span>. This group supports use cases that require both shared secrets to be generated by FIPS-approved mechanisms.<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
@@ -1274,30 +1269,23 @@ specified in this document may be implemented in a FIPS-approved way as discusse
 </li>
       </ul>
 <p id="section-2-3">Key establishment using NIST curves is outlined in Section 6.1.1.2 of <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
 <div id="terminology">
-<section id="section-2.1">
-        <h3 id="name-terminology">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
-        </h3>
-<p id="section-2.1-1"><span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> defines "traditional" algorithms as those that are already widely adopted and "next-generation" algorithms
-as those that are not yet widely adopted, such as post-quantum algorithms. In this document, ECDH using Curve25519, P-256, or
-P-384 is considered traditional, while ML-KEM is considered next-generation.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2"><span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> also defines a "hybrid" key exchange as the simultaneous use of multiple key exchange algorithms, with their
-outputs combined to provide security as long as at least one of the component algorithms remains secure, even if the others are
-compromised. This document uses the term "hybrid" with the same meaning.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
-<div id="conventions-and-definitions">
 <section id="section-3">
-      <h2 id="name-conventions-and-definitions">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      <h2 id="name-terminology">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
       </h2>
-<p id="section-3-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+<p id="section-3-1"><span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> defines "traditional" algorithms as those that are already widely adopted and "next-generation" algorithms
+as those that are not yet widely adopted, such as post-quantum algorithms. In this document, ECDHE using Curve25519, P-256, or
+P-384 is considered traditional, while ML-KEM is considered next-generation.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2"><span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> also defines a "hybrid" key exchange as the simultaneous use of multiple key exchange algorithms, with their
+outputs combined to provide security as long as at least one of the component algorithms remains secure, even if the others are
+compromised. This document uses the term "hybrid" with the same meaning.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
-appear in all capitals, as shown here.<a href="#section-3-1" class="pilcrow">¶</a></p>
+appear in all capitals, as shown here.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="negotiated-groups">
@@ -1319,13 +1307,13 @@ The size of the client share is 1216 bytes (1184 bytes for the ML-KEM part and 3
 reversed. This is due to historical reasons.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1-3">When the SecP256r1MLKEM768 group is negotiated, the client's key_exchange value
 is the concatenation of the secp256r1 ephemeral share and ML-KEM-768 encapsulation key.
-The ECDHE share is the serialized value of the uncompressed ECDH point representation as
-defined  in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.8.2" class="relref">Section 4.2.8.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>. The size of the client share is 1249 bytes
+The ECDHE share is the serialized value of the uncompressed ECDHE point representation as
+defined  in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-4.3.8.2" class="relref">Section 4.3.8.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>. The size of the client share is 1249 bytes
 (65 bytes for the secp256r1 part and 1184 bytes for ML-KEM).<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 <p id="section-4.1-4">When the SecP384r1MLKEM1024 group is negotiated, the client's key_exchange value
 is the concatenation of the secp384r1 ephemeral share and the ML-KEM-1024
-encapsulation key. The ECDH share is the serialized value of the uncompressed ECDH point
-representation as defined in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.8.2" class="relref">Section 4.2.8.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>. The size of the
+encapsulation key. The ECDHE share is the serialized value of the uncompressed ECDHE point
+representation as defined in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-4.3.8.2" class="relref">Section 4.3.8.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>. The size of the
 client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM).<a href="#section-4.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1334,21 +1322,21 @@ client share is 1665 bytes (97 bytes for the secp384r1 part and 1568 for ML-KEM)
         <h3 id="name-server-share">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-server-share" class="section-name selfRef">Server Share</a>
         </h3>
-<p id="section-4.2-1">When the X25519MLKEM768 group is negotiated, the server's key exchange
+<p id="section-4.2-1">When the X25519MLKEM768 group is negotiated, the server's key_exchange
 value is the concatenation of an ML-KEM ciphertext returned from encapsulation
 to the client's encapsulation key and the server's ephemeral X25519 share.
 The size of the server share is 1120 bytes (1088 bytes for the ML-KEM part and 32 bytes for X25519).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">When the SecP256r1MLKEM768 group is negotiated, the server's key exchange
+<p id="section-4.2-2">When the SecP256r1MLKEM768 group is negotiated, the server's key_exchange
 value is the concatenation of the server's ephemeral secp256r1 share encoded
 in the same way as the client share and an ML-KEM ciphertext returned from encapsulation
 to the client's encapsulation key. The size of the server share is 1153 bytes (1088 bytes
 for the ML-KEM part and 65 bytes for secp256r1).<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">When the SecP384r1MLKEM1024 group is negotiated, the server's key exchange
+<p id="section-4.2-3">When the SecP384r1MLKEM1024 group is negotiated, the server's key_exchange
 value is the concatenation of the server's ephemeral secp384r1 share
 encoded in the same way as the client share and an ML-KEM ciphertext returned
 from encapsulation to the client's encapsulation key. The size of the server
 share is 1665 bytes (1568 bytes for the ML-KEM part and 97 bytes for
-secp384r1)<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+secp384r1).<a href="#section-4.2-3" class="pilcrow">¶</a></p>
 <p id="section-4.2-4">For all groups, the server <span class="bcp14">MUST</span> perform the encapsulation key check
 described in Section 7.2 of <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span> on the client's encapsulation
 key and abort with an illegal_parameter alert if it fails.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
@@ -1356,8 +1344,8 @@ key and abort with an illegal_parameter alert if it fails.<a href="#section-4.2-
 the selected group and abort with an illegal_parameter alert if it fails.
 If ML-KEM decapsulation fails for any other reason, the connection <span class="bcp14">MUST</span>
 be aborted with an internal_error alert.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
-<p id="section-4.2-6">For all groups, both client and server <span class="bcp14">MUST</span> process the ECDH part
-as described in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-4.2.8.2" class="relref">Section 4.2.8.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, including all validity checks,
+<p id="section-4.2-6">For all groups, both client and server <span class="bcp14">MUST</span> process the ECDHE part
+as described in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-4.3.8.2" class="relref">Section 4.3.8.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>, including all validity checks,
 and abort with an illegal_parameter alert if it fails.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1370,18 +1358,18 @@ and abort with an illegal_parameter alert if it fails.<a href="#section-4.2-6" c
 shared secret and the X25519 shared secret. The shared secret is 64 bytes
 (32 bytes for each part).<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">For SecP256r1MLKEM768, the shared secret is the concatenation of the
-ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDH
+ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDHE
 shared secret elliptic curve point represented as an octet string as
-defined in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.
+defined in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
 The size of the shared secret is 64 bytes (32 bytes for each part).<a href="#section-4.3-2" class="pilcrow">¶</a></p>
 <p id="section-4.3-3">For SecP384r1MLKEM1024, the shared secret is the concatenation of the
-ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDH
+ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDHE
 shared secret elliptic curve point represented as an octet string as
-defined in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.
-The size of the shared secret is 80 bytes (48 bytes for the ECDH part and
+defined in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
+The size of the shared secret is 80 bytes (48 bytes for the ECDHE part and
 32 bytes for the ML-KEM part).<a href="#section-4.3-3" class="pilcrow">¶</a></p>
-<p id="section-4.3-4">For all groups, both client and server <span class="bcp14">MUST</span> calculate the ECDH part of the
-shared secret as described in <span><a href="https://rfc-editor.org/rfc/rfc8446#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, including the
+<p id="section-4.3-4">For all groups, both client and server <span class="bcp14">MUST</span> calculate the ECDHE part of the
+shared secret as described in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>, including the
 all-zero shared secret check for X25519, and abort the connection with an
 illegal_parameter alert if it fails.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
 </section>
@@ -1403,13 +1391,13 @@ and <span>[<a href="#NIST-SP-800-135" class="cite xref">NIST-SP-800-135</a>]</sp
 usage of the HMAC-based Key Derivation Function (HKDF) <span>[<a href="#RFC5869" class="cite xref">RFC5869</a>]</span> with two distinct shared secrets, with the condition that the first
 one is computed by a FIPS-approved key-establishment scheme. FIPS also requires a certified
 implementation of the scheme, which will remain more ubiquitous for secp256r1 in the coming years. For this reason,
-the ML-KEM shared secret is placed first in X25519MLKEM768, while the ECDH shared secret is placed first
+the ML-KEM shared secret is placed first in X25519MLKEM768, while the ECDHE shared secret is placed first
 in SecP256r1MLKEM768 and SecP384r1MLKEM1024. This means that for SecP256r1MLKEM768 and SecP384r1MLKEM1024,
-the ECDH implementation must be certified, whereas the ML-KEM implementation does not require certification. In
+the ECDHE implementation must be certified, whereas the ML-KEM implementation does not require certification. In
 contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-2.2">
-          <p id="section-5-2.2.1"><strong>SP800-227 compliance</strong>. NIST Special Publication 800-227 <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> provides general guidance on the design and use of key encapsulation mechanisms, including hybrid constructions. The key agreements defined in this document follow the principles described in Section 4.6 of <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span>, which discusses the combination of post-quantum and classical key-establishment schemes and the use of approved key combiners. In particular, the shared-secret concatenation and HKDF-based derivation used by TLS 1.3 are consistent with the composite-KEM constructions and key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span>. Section 4.6.3 of <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> further provides relevant security considerations for hybrid KEM designs underlying the approach used in this document.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-5-2.2.1"><strong>SP800-227 compliance</strong>. NIST Special Publication 800-227 <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> provides general guidance on the design and use of key encapsulation mechanisms, including hybrid constructions. The key agreements defined in this document follow the principles described in Section 4.6 of <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span>, which discusses the combination of post-quantum and classical key-establishment schemes and the use of approved key combiners. In particular, the shared-secret concatenation and HKDF-based derivation used by TLS 1.3 are consistent with the composite-KEM constructions and key-combiner recommendations outlined in Sections 4.6.1 and 4.6.2 of <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span>. Section 4.6.3 of <span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> further provides relevant security considerations for hybrid KEM designs underlying the approach used in this document.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1422,10 +1410,28 @@ contrast, for X25519MLKEM768, the ML-KEM implementation must be certified.<a hre
 <p id="section-6-1">The same security considerations as those described in <span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span> apply to the approach used by this document.
 The security analysis relies crucially on the TLS 1.3 message transcript, and one cannot assume a similar
 hybridization is secure in other protocols.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2"><span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> includes guidelines and requirements for implementations on using KEMs securely. Implementers are encouraged to use implementations resistant to side-channel attacks,
-especially those that can be applied by remote attackers.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-2"><span>[<a href="#NIST-SP-800-227" class="cite xref">NIST-SP-800-227</a>]</span> includes guidelines and requirements for implementations on using KEMs securely. Implementers
+are encouraged to use implementations resistant to side-channel attacks, especially those that can be applied
+by remote attackers.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <p id="section-6-3">All groups defined in this document use and generate fixed-length public keys, ciphertexts,
 and shared secrets, which complies with the requirements described in <span><a href="https://rfc-editor.org/rfc/rfc9954#section-6" class="relref">Section 6</a> of [<a href="#RFC9954" class="cite xref">RFC9954</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4">During ML-KEM encapsulation, encapsulation randomness <code>m</code> is drawn from a random bit generator and encrypted
+(see <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>, Algorithms 17 and 20); the client, which holds the decapsulation key, then recovers <code>m</code>
+exactly during decapsulation (see <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span>, Algorithm 18). Consequently, any information <code>m</code> carries
+about the generator's other outputs is also exposed to the client.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">The disclosure of the output(s) of an insecure random number generator (RNG) when used in TLS can
+be used in an attack to compromise the state of the insecure RNG itself as described in <span>[<a href="#DUALECTLS" class="cite xref">DUALECTLS</a>]</span>.
+The encapsulation randomness <code>m</code> in ML-KEM is an additional place where RNG output is disclosed to an active attacker.
+Implementers should follow the RBG guidance in <span>[<a href="#NIST-FIPS-203" class="cite xref">NIST-FIPS-203</a>]</span> and the random number generation guidance in
+<span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>. Implementers can choose to implement mechanisms from <span>[<a href="#RFC8937" class="cite xref">RFC8937</a>]</span> for additional protection
+across sessions.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">In contrast, the ECDHE ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
+any passive observer with access to a cryptographically relevant quantum computer (CRQC) can recover the scalar,
+which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
+cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>, and for X25519
+as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">If the same insecure RNG is used by both algorithms then a disclosure of state by one of the algorithms will affect
+the security of the other algorithm as well.<a href="#section-6-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1468,7 +1474,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
           <dd class="break"></dd>
 <dt id="section-7.1-1.11">Comment:</dt>
           <dd style="margin-left: 1.5em" id="section-7.1-1.12">
-            <p id="section-7.1-1.12.1">Combining X25519 ECDH with ML-KEM-768<a href="#section-7.1-1.12.1" class="pilcrow">¶</a></p>
+            <p id="section-7.1-1.12.1">Combining X25519 ECDHE with ML-KEM-768<a href="#section-7.1-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1507,7 +1513,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
           <dd class="break"></dd>
 <dt id="section-7.2-1.11">Comment:</dt>
           <dd style="margin-left: 1.5em" id="section-7.2-1.12">
-            <p id="section-7.2-1.12.1">Combining secp256r1 ECDH with ML-KEM-768<a href="#section-7.2-1.12.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-1.12.1">Combining secp256r1 ECDHE with ML-KEM-768<a href="#section-7.2-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1546,7 +1552,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
           <dd class="break"></dd>
 <dt id="section-7.3-1.11">Comment:</dt>
           <dd style="margin-left: 1.5em" id="section-7.3-1.12">
-            <p id="section-7.3-1.12.1">Combining secp384r1 ECDH with ML-KEM-1024<a href="#section-7.3-1.12.1" class="pilcrow">¶</a></p>
+            <p id="section-7.3-1.12.1">Combining secp384r1 ECDHE with ML-KEM-1024<a href="#section-7.3-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1609,9 +1615,9 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8446">[RFC8446]</dt>
+<dt id="RFC9846">[RFC9846]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 9846</span>, <span class="seriesInfo">DOI 10.17487/RFC9846</span>, <time datetime="2026-07" class="refDate">July 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9846">https://www.rfc-editor.org/rfc/rfc9846</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9954">[RFC9954]</dt>
       <dd>
@@ -1626,9 +1632,17 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
 <a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="DUALECTLS">[DUALECTLS]</dt>
+        <dd>
+<span class="refTitle">"On the Practical Exploitability of Dual EC in TLS Implementations"</span>, <time datetime="2014" class="refDate">2014</time>, <span>&lt;<a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf">https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC5869">[RFC5869]</dt>
         <dd>
 <span class="refAuthor">Krawczyk, H.</span> and <span class="refAuthor">P. Eronen</span>, <span class="refTitle">"HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"</span>, <span class="seriesInfo">RFC 5869</span>, <span class="seriesInfo">DOI 10.17487/RFC5869</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5869">https://www.rfc-editor.org/rfc/rfc5869</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8937">[RFC8937]</dt>
+        <dd>
+<span class="refAuthor">Cremers, C.</span>, <span class="refAuthor">Garratt, L.</span>, <span class="refAuthor">Smyshlyaev, S.</span>, <span class="refAuthor">Sullivan, N.</span>, and <span class="refAuthor">C. Wood</span>, <span class="refTitle">"Randomness Improvements for Security Protocols"</span>, <span class="seriesInfo">RFC 8937</span>, <span class="seriesInfo">DOI 10.17487/RFC8937</span>, <time datetime="2020-10" class="refDate">October 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8937">https://www.rfc-editor.org/rfc/rfc8937</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9794">[RFC9794]</dt>
         <dd>
