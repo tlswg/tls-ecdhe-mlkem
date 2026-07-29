@@ -17,6 +17,7 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
     " name="description">
 <meta content="xml2rfc 3.34.0" name="generator">
 <meta content="ECDH" name="keyword">
+<meta content="ECDHE" name="keyword">
 <meta content="hybrid" name="keyword">
 <meta content="ML-KEM" name="keyword">
 <meta content="post-quantum" name="keyword">
@@ -71,7 +72,6 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
   src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: italic;
@@ -120,7 +120,6 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
   src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: normal;
@@ -185,7 +184,6 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 }
 
 @font-face {
@@ -1058,7 +1056,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kwiatkowski, et al.</td>
-<td class="center">Expires 29 January 2027</td>
+<td class="center">Expires 30 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1069,12 @@ svg {
 <dd class="internet-draft">draft-ietf-tls-ecdhe-mlkem-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-28" class="published">28 July 2026</time>
+<time datetime="2026-07-29" class="published">29 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-29">29 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-01-30">30 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1141,7 +1139,7 @@ SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine the post-quantum ML-KE
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 30 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1253,7 +1251,7 @@ and specifies code points for the hybrid groups.<a href="#section-1-3" class="pi
       <h2 id="name-motivation">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-motivation" class="section-name selfRef">Motivation</a>
       </h2>
-<p id="section-2-1">This document introduces three new supported groups for Post-Quantum Traditional (PQ/T) hybrid key agreements in TLS 1.3 -- X25519MLKEM768,
+<p id="section-2-1">This document introduces three new supported groups for Post-Quantum Traditional (PQ/T) hybrid key agreements <span>[<a href="#RFC9794" class="cite xref">RFC9794</a>]</span> in TLS 1.3 -- X25519MLKEM768,
 SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine ML-KEM with Ephemeral Elliptic Curve Diffie-Hellman (ECDHE) in the manner
 described in <span>[<a href="#RFC9954" class="cite xref">RFC9954</a>]</span>. Any of the hybrid groups
 specified in this document may be implemented in a FIPS-approved way as discussed in <a href="#regulatory-context" class="auto internal xref">Section 5</a>.<a href="#section-2-1" class="pilcrow">¶</a></p>
@@ -1358,12 +1356,12 @@ and abort with an illegal_parameter alert if it fails.<a href="#section-4.2-6" c
 shared secret and the X25519 shared secret. The shared secret is 64 bytes
 (32 bytes for each part).<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">For SecP256r1MLKEM768, the shared secret is the concatenation of the
-ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDHE
+ECDHE and ML-KEM shared secrets. The ECDHE shared secret is the x-coordinate of the ECDHE
 shared secret elliptic curve point represented as an octet string as
 defined in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
 The size of the shared secret is 64 bytes (32 bytes for each part).<a href="#section-4.3-2" class="pilcrow">¶</a></p>
 <p id="section-4.3-3">For SecP384r1MLKEM1024, the shared secret is the concatenation of the
-ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDHE
+ECDHE and ML-KEM shared secrets. The ECDHE shared secret is the x-coordinate of the ECDHE
 shared secret elliptic curve point represented as an octet string as
 defined in <span><a href="https://rfc-editor.org/rfc/rfc9846#section-7.4.2" class="relref">Section 7.4.2</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span>.
 The size of the shared secret is 80 bytes (48 bytes for the ECDHE part and
@@ -1430,8 +1428,8 @@ any passive observer with access to a cryptographically relevant quantum compute
 which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
 cryptographically secure RNG: for secp256r1 and secp384r1 as required by <span>[<a href="#NIST-SP-800-56A" class="cite xref">NIST-SP-800-56A</a>]</span>, and for X25519
 as described in <span>[<a href="#RFC7748" class="cite xref">RFC7748</a>]</span>; the guidance in <span><a href="https://rfc-editor.org/rfc/rfc9846#appendix-C.1" class="relref">Appendix C.1</a> of [<a href="#RFC9846" class="cite xref">RFC9846</a>]</span> applies here as well.<a href="#section-6-6" class="pilcrow">¶</a></p>
-<p id="section-6-7">If the same insecure RNG is used by both algorithms then a disclosure of state by one of the algorithms will affect
-the security of the other algorithm as well.<a href="#section-6-7" class="pilcrow">¶</a></p>
+<p id="section-6-7">If the same insecure RNG is used by both algorithms, then a disclosure of state by one of the algorithms will
+also affect the security of the other algorithm.<a href="#section-6-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1474,7 +1472,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
           <dd class="break"></dd>
 <dt id="section-7.1-1.11">Comment:</dt>
           <dd style="margin-left: 1.5em" id="section-7.1-1.12">
-            <p id="section-7.1-1.12.1">Combining X25519 ECDHE with ML-KEM-768<a href="#section-7.1-1.12.1" class="pilcrow">¶</a></p>
+            <p id="section-7.1-1.12.1">Combining X25519 ECDH with ML-KEM-768<a href="#section-7.1-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1513,7 +1511,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
           <dd class="break"></dd>
 <dt id="section-7.2-1.11">Comment:</dt>
           <dd style="margin-left: 1.5em" id="section-7.2-1.12">
-            <p id="section-7.2-1.12.1">Combining secp256r1 ECDHE with ML-KEM-768<a href="#section-7.2-1.12.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-1.12.1">Combining secp256r1 ECDH with ML-KEM-768<a href="#section-7.2-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1552,7 +1550,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
           <dd class="break"></dd>
 <dt id="section-7.3-1.11">Comment:</dt>
           <dd style="margin-left: 1.5em" id="section-7.3-1.12">
-            <p id="section-7.3-1.12.1">Combining secp384r1 ECDHE with ML-KEM-1024<a href="#section-7.3-1.12.1" class="pilcrow">¶</a></p>
+            <p id="section-7.3-1.12.1">Combining secp384r1 ECDH with ML-KEM-1024<a href="#section-7.3-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1586,10 +1584,6 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
 <dt id="NIST-FIPS-203">[NIST-FIPS-203]</dt>
         <dd>
 <span class="refTitle">"Module-lattice-based key-encapsulation mechanism standard"</span>, <span class="refContent">National Institute of Standards and Technology (U.S.)</span>, <span class="seriesInfo">DOI 10.6028/nist.fips.203</span>, <time datetime="2024-08" class="refDate">August 2024</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.fips.203">https://doi.org/10.6028/nist.fips.203</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="NIST-SP-800-56A">[NIST-SP-800-56A]</dt>
-        <dd>
-<span class="refAuthor">Barker, E.</span>, <span class="refAuthor">Chen, L.</span>, <span class="refAuthor">Roginsky, A.</span>, <span class="refAuthor">Vassilev, A.</span>, and <span class="refAuthor">R. Davis</span>, <span class="refTitle">"Recommendation for pair-wise key-establishment schemes using discrete logarithm cryptography"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.sp.800-56ar3</span>, <time datetime="2018-04" class="refDate">April 2018</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.sp.800-56ar3">https://doi.org/10.6028/nist.sp.800-56ar3</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NIST-SP-800-56C">[NIST-SP-800-56C]</dt>
         <dd>
@@ -1634,7 +1628,11 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
 <dl class="references">
 <dt id="DUALECTLS">[DUALECTLS]</dt>
         <dd>
-<span class="refTitle">"On the Practical Exploitability of Dual EC in TLS Implementations"</span>, <time datetime="2014" class="refDate">2014</time>, <span>&lt;<a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf">https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf</a>&gt;</span>. </dd>
+<span class="refAuthor">Checkoway, S.</span>, <span class="refAuthor">Fredrikson, M.</span>, <span class="refAuthor">Niederhagen, R.</span>, <span class="refAuthor">Everspaugh, A.</span>, <span class="refAuthor">Green, M.</span>, <span class="refAuthor">Lange, T.</span>, <span class="refAuthor">Ristenpart, T.</span>, <span class="refAuthor">Bernstein, D.</span>, <span class="refAuthor">Maskiewicz, J.</span>, and <span class="refAuthor">H. Shacham</span>, <span class="refTitle">"On the Practical Exploitability of Dual EC in TLS Implementations"</span>, <span class="refContent">23rd USENIX Security Symposium (USENIX Security 14)</span>, <time datetime="2014" class="refDate">2014</time>, <span>&lt;<a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf">https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="NIST-SP-800-56A">[NIST-SP-800-56A]</dt>
+        <dd>
+<span class="refAuthor">Barker, E.</span>, <span class="refAuthor">Chen, L.</span>, <span class="refAuthor">Roginsky, A.</span>, <span class="refAuthor">Vassilev, A.</span>, and <span class="refAuthor">R. Davis</span>, <span class="refTitle">"Recommendation for pair-wise key-establishment schemes using discrete logarithm cryptography"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.sp.800-56ar3</span>, <time datetime="2018-04" class="refDate">April 2018</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.sp.800-56ar3">https://doi.org/10.6028/nist.sp.800-56ar3</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5869">[RFC5869]</dt>
         <dd>
@@ -1691,7 +1689,7 @@ ratified by NIST, which is specified in <span>[<a href="#NIST-FIPS-203" class="c
 <div dir="auto" class="left"><span class="org">University of Waterloo</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:dstebila@waterloo.ca" class="email">dstebila@waterloo.ca</a>
+<a href="mailto:dstebila@uwaterloo.ca" class="email">dstebila@uwaterloo.ca</a>
 </div>
 </address>
 </section>
