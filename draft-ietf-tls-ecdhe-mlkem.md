@@ -43,7 +43,7 @@ author:
   - ins: D. Stebila
     name: Douglas Stebila
     organization: University of Waterloo
-    email: dstebila@waterloo.ca
+    email: dstebila@uwaterloo.ca
 
 normative:
   RFC7748:
