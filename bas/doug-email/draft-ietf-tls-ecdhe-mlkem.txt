@@ -5,12 +5,12 @@
 Transport Layer Security                                  K. Kwiatkowski
 Internet-Draft                                                  PQShield
 Intended status: Standards Track                           P. Kampanakis
-Expires: 29 January 2027                                             AWS
+Expires: 30 January 2027                                             AWS
                                                         B. E. Westerbaan
                                                               Cloudflare
                                                               D. Stebila
                                                   University of Waterloo
-                                                            28 July 2026
+                                                            29 July 2026
 
 
        Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 January 2027.
+   This Internet-Draft will expire on 30 January 2027.
 
 Copyright Notice
 
@@ -580,4 +580,4 @@ Authors' Addresses
 
    Douglas Stebila
    University of Waterloo
-   Email: dstebila@waterloo.ca
+   Email: dstebila@uwaterloo.ca
