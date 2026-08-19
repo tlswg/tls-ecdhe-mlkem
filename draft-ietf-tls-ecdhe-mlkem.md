@@ -71,7 +71,7 @@ informative:
       - ins: M. Green
       - ins: T. Lange
       - ins: T. Ristenpart
-      - ins: D. Bernstein
+      - ins: D. J. Bernstein
       - ins: J. Maskiewicz
       - ins: H. Shacham
     refcontent: 23rd USENIX Security Symposium (USENIX Security 14)
@@ -112,7 +112,7 @@ specified in this document may be implemented in a FIPS-approved way as discusse
 
 * The third group uses secp384r1 (NIST P-384) {{NIST-FIPS-186}}. This group is intended for high-security environments that require FIPS-approved mechanisms with an increased security margin.
 
-Key establishment using NIST curves is outlined in Section 6.1.1.2 of {{NIST-SP-800-56A}}.
+Key establishment using NIST curves is outlined in Section 6.1.2.2 of {{NIST-SP-800-56A}}.
 
 # Terminology
 
@@ -251,7 +251,7 @@ Implementers should follow the RBG guidance in {{NIST-FIPS-203}} and the random 
 {{Section C.1 of RFC9846}}. Implementers can choose to implement mechanisms from {{RFC8937}} for additional protection
 across sessions.
 
-In contrast, the ECDHE ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
+In contrast, the ECDH ephemeral scalars taken from the RNG are never directly disclosed to the peer. However,
 any passive observer with access to a cryptographically relevant quantum computer (CRQC) can recover the scalar,
 which is derived directly from RNG output. Regardless, ephemeral scalars should always be generated using a
 cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}}, and for X25519
