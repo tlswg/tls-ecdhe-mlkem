@@ -1,5 +1,7 @@
 # Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3
 
+✨ Published as [RFC 10024](https://datatracker.ietf.org/doc/rfc10024/) ✨.
+
 This is the working area for the individual Internet-Draft, "Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3".
 
 * [Editor's Copy](https://post-quantum-cryptography.github.io/draft-kwiatkowski-tls-ecdhe-mlkem/#go.draft-kwiatkowski-tls-ecdhe-mlkem.html)
