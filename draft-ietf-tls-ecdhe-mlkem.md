@@ -15,6 +15,7 @@ area: "Security"
 workgroup: "Transport Layer Security"
 keyword:
  - ECDH
+ - ECDHE
  - hybrid
  - ML-KEM
  - post-quantum
@@ -43,7 +44,7 @@ author:
   - ins: D. Stebila
     name: Douglas Stebila
     organization: University of Waterloo
-    email: dstebila@waterloo.ca
+    email: dstebila@uwaterloo.ca
 
 normative:
   RFC7748:
@@ -51,17 +52,29 @@ normative:
   RFC9954:
   NIST-FIPS-186: DOI.10.6028/NIST.FIPS.186-5
   NIST-FIPS-203: DOI.10.6028/NIST.FIPS.203
-  NIST-SP-800-56A: DOI.10.6028/NIST.SP.800-56Ar3
   NIST-SP-800-56C: DOI.10.6028/NIST.SP.800-56Cr2
   NIST-SP-800-135: DOI.10.6028/NIST.SP.800-135r1
   NIST-SP-800-227: DOI.10.6028/NIST.SP.800-227
 informative:
+  NIST-SP-800-56A: DOI.10.6028/NIST.SP.800-56Ar3
   RFC9794:
   RFC9847:
   RFC5869:
   RFC8937:
   DUALECTLS:
     title: "On the Practical Exploitability of Dual EC in TLS Implementations"
+    author:
+      - ins: S. Checkoway
+      - ins: M. Fredrikson
+      - ins: R. Niederhagen
+      - ins: A. Everspaugh
+      - ins: M. Green
+      - ins: T. Lange
+      - ins: T. Ristenpart
+      - ins: D. Bernstein
+      - ins: J. Maskiewicz
+      - ins: H. Shacham
+    refcontent: 23rd USENIX Security Symposium (USENIX Security 14)
     target: https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-checkoway.pdf
     date: 2014
 
@@ -88,7 +101,7 @@ and specifies code points for the hybrid groups.
 
 # Motivation
 
-This document introduces three new supported groups for Post-Quantum Traditional (PQ/T) hybrid key agreements in TLS 1.3 -- X25519MLKEM768,
+This document introduces three new supported groups for Post-Quantum Traditional (PQ/T) hybrid key agreements {{RFC9794}} in TLS 1.3 -- X25519MLKEM768,
 SecP256r1MLKEM768, and SecP384r1MLKEM1024 -- that combine ML-KEM with Ephemeral Elliptic Curve Diffie-Hellman (ECDHE) in the manner
 described in {{RFC9954}}. Any of the hybrid groups
 specified in this document may be implemented in a FIPS-approved way as discussed in {{regulatory-context}}.
@@ -178,13 +191,13 @@ shared secret and the X25519 shared secret. The shared secret is 64 bytes
 (32 bytes for each part).
 
 For SecP256r1MLKEM768, the shared secret is the concatenation of the
-ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDHE
+ECDHE and ML-KEM shared secrets. The ECDHE shared secret is the x-coordinate of the ECDHE
 shared secret elliptic curve point represented as an octet string as
 defined in {{Section 7.4.2 of RFC9846}}.
 The size of the shared secret is 64 bytes (32 bytes for each part).
 
 For SecP384r1MLKEM1024, the shared secret is the concatenation of the
-ECDHE and ML-KEM shared secret. The ECDHE shared secret is the x-coordinate of the ECDHE
+ECDHE and ML-KEM shared secrets. The ECDHE shared secret is the x-coordinate of the ECDHE
 shared secret elliptic curve point represented as an octet string as
 defined in {{Section 7.4.2 of RFC9846}}.
 The size of the shared secret is 80 bytes (48 bytes for the ECDHE part and
@@ -244,8 +257,8 @@ which is derived directly from RNG output. Regardless, ephemeral scalars should 
 cryptographically secure RNG: for secp256r1 and secp384r1 as required by {{NIST-SP-800-56A}}, and for X25519
 as described in {{RFC7748}}; the guidance in {{Section C.1 of RFC9846}} applies here as well.
 
-If the same insecure RNG is used by both algorithms then a disclosure of state by one of the algorithms will affect
-the security of the other algorithm as well.
+If the same insecure RNG is used by both algorithms, then a disclosure of state by one of the algorithms will
+also affect the security of the other algorithm.
 
 # IANA Considerations
 
@@ -270,7 +283,7 @@ ratified by NIST, which is specified in {{NIST-FIPS-203}}.
  : RFC 10024
 
  Comment:
- : Combining X25519 ECDHE with ML-KEM-768
+ : Combining X25519 ECDH with ML-KEM-768
 {: spacing="compact"}
 
 ## SecP256r1MLKEM768
@@ -291,7 +304,7 @@ ratified by NIST, which is specified in {{NIST-FIPS-203}}.
  : RFC 10024
 
  Comment:
- : Combining secp256r1 ECDHE with ML-KEM-768
+ : Combining secp256r1 ECDH with ML-KEM-768
  {: spacing="compact"}
 
 ## SecP384r1MLKEM1024
@@ -312,7 +325,7 @@ ratified by NIST, which is specified in {{NIST-FIPS-203}}.
  : RFC 10024
 
  Comment:
- : Combining secp384r1 ECDHE with ML-KEM-1024
+ : Combining secp384r1 ECDH with ML-KEM-1024
 {: spacing="compact"}
 
 ## Obsoleted Supported Groups
